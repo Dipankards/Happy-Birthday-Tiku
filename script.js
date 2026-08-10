@@ -1,107 +1,93 @@
-/* =====================================================
-   BEGIN OUR STORY
-===================================================== */
+/* =========================================
+   HAPPY BIRTHDAY TIKU
+   OPENING ANIMATION
+========================================= */
 
-function beginStory() {
+document.addEventListener("DOMContentLoaded", () => {
 
-    const story =
-        document.getElementById("story");
+    const monkey = document.getElementById("monkey");
+    const duck = document.getElementById("duck");
+    const hugCharacter = document.getElementById("hugCharacter");
+    const heartBurst = document.getElementById("heartBurst");
+    const storyButton = document.getElementById("storyButton");
+    const storySection = document.getElementById("storySection");
 
-    story.scrollIntoView({
 
-        behavior: "smooth",
+    /* =====================================
+       HIDE MONKEY + DUCK WHEN HUG APPEARS
+    ====================================== */
 
-        block: "start"
+    setTimeout(() => {
+
+        monkey.classList.add("hugged");
+        duck.classList.add("hugged");
+
+    }, 4700);
+
+
+    /* =====================================
+       MAKE SURE HUG IS VISIBLE
+    ====================================== */
+
+    setTimeout(() => {
+
+        hugCharacter.classList.add("active");
+
+    }, 4700);
+
+
+    /* =====================================
+       HEART BURST
+    ====================================== */
+
+    setTimeout(() => {
+
+        heartBurst.classList.add("active");
+
+    }, 4900);
+
+
+    /* =====================================
+       BEGIN OUR STORY BUTTON
+    ====================================== */
+
+    storyButton.addEventListener("click", () => {
+
+        storySection.scrollIntoView({
+            behavior: "smooth"
+        });
 
     });
 
-}
 
+    /* =====================================
+       LITTLE HEARTS WHEN CLICKING
+    ====================================== */
 
-/* =====================================================
-   SCROLL REVEAL
-===================================================== */
+    document.addEventListener("click", (event) => {
 
-const observer =
-    new IntersectionObserver(
-
-        function(entries) {
-
-            entries.forEach(function(entry) {
-
-                if (entry.isIntersecting) {
-
-                    entry.target.style.opacity = "1";
-
-                    entry.target.style.transform =
-                        "translateY(0)";
-
-                }
-
-            });
-
-        },
-
-        {
-            threshold: 0.15
+        // Don't create extra hearts when clicking
+        // the story button.
+        if (event.target === storyButton) {
+            return;
         }
 
-    );
 
-
-document
-    .querySelectorAll(
-        ".timeline-item, " +
-        ".story-event, " +
-        ".memory-card, " +
-        ".love-card, " +
-        ".promise"
-    )
-    .forEach(function(element) {
-
-        element.style.opacity = "0";
-
-        element.style.transform =
-            "translateY(40px)";
-
-        element.style.transition =
-            "all 1s ease";
-
-        observer.observe(element);
-
-    });
-
-
-/* =====================================================
-   CLICK HEART EFFECT
-===================================================== */
-
-document.addEventListener(
-    "click",
-    function(event) {
-
-        const heart =
-            document.createElement("div");
+        const heart = document.createElement("div");
 
         heart.innerHTML = "❤️";
 
-        heart.style.position =
-            "fixed";
+        heart.style.position = "fixed";
 
-        heart.style.left =
-            event.clientX + "px";
+        heart.style.left = event.clientX + "px";
 
-        heart.style.top =
-            event.clientY + "px";
+        heart.style.top = event.clientY + "px";
 
-        heart.style.pointerEvents =
-            "none";
+        heart.style.fontSize = "18px";
 
-        heart.style.fontSize =
-            "20px";
+        heart.style.pointerEvents = "none";
 
-        heart.style.zIndex =
-            "9999";
+        heart.style.zIndex = "9999";
 
         heart.style.transition =
             "all 1s ease";
@@ -110,22 +96,22 @@ document.addEventListener(
         document.body.appendChild(heart);
 
 
-        setTimeout(function() {
+        requestAnimationFrame(() => {
 
             heart.style.transform =
-                "translateY(-80px) scale(1.5)";
+                "translateY(-70px) scale(1.4)";
 
-            heart.style.opacity =
-                "0";
+            heart.style.opacity = "0";
 
-        }, 20);
+        });
 
 
-        setTimeout(function() {
+        setTimeout(() => {
 
             heart.remove();
 
         }, 1000);
 
-    }
-);
+    });
+
+});
