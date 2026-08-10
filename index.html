@@ -1,655 +1,1118 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <title>Happy Birthday Tiku ❤️</title>
 
     <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
 
-    <!-- ============================= -->
-    <!-- OPENING SCREEN -->
-    <!-- ============================= -->
 
-    <section id="opening" class="opening">
+<!-- =====================================================
+     OPENING SCREEN
+===================================================== -->
 
-        <div class="stars"></div>
+<section id="opening" class="opening">
 
-        <div class="intro-text">
-            <span>A little something I made for you...</span>
-        </div>
+    <div class="background-glow"></div>
 
-        <!-- TIKU PHOTO -->
-        <div class="photo-container">
-            <div class="photo-glow"></div>
-
-            <!-- Replace this later with Tiku's photo -->
-            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330"
-                 alt="Tiku"
-                 class="tiku-photo">
-        </div>
+    <div class="stars"></div>
 
 
-        <!-- ANIMATED COUPLE -->
+    <!-- 0–2 SECONDS -->
 
-        <div class="couple">
+    <div class="intro-message">
 
-            <div class="character monkey">
-                <div class="character-body">
-                    🐒
-                </div>
-                <div class="character-name">
-                    Monkey
-                </div>
+        A little something I made for you...
+
+    </div>
+
+
+    <!-- =================================================
+         TIKU PHOTO
+    ================================================= -->
+
+    <div class="tiku-photo-container">
+
+        <div class="photo-glow"></div>
+
+        <img
+            src="assets/photos/tikucover.jpg"
+            alt="Tiku"
+            class="tiku-photo"
+        >
+
+    </div>
+
+
+    <!-- =================================================
+         CUSTOM MONKEY + DUCK
+    ================================================= -->
+
+    <div class="couple-animation">
+
+
+        <!-- ================= MONKEY ================= -->
+
+        <div class="cartoon monkey">
+
+            <div class="monkey-tail"></div>
+
+
+            <div class="monkey-body">
+
+                <div class="monkey-belly"></div>
+
+                <div class="monkey-arm monkey-arm-left"></div>
+
+                <div class="monkey-arm monkey-arm-right"></div>
+
+                <div class="monkey-leg monkey-leg-left"></div>
+
+                <div class="monkey-leg monkey-leg-right"></div>
+
             </div>
 
 
-            <div class="love-space">
+            <div class="monkey-head">
 
-                <div class="heart heart1">❤️</div>
-                <div class="heart heart2">💕</div>
-                <div class="heart heart3">💗</div>
+                <div class="monkey-ear left"></div>
+
+                <div class="monkey-ear right"></div>
+
+
+                <div class="monkey-face">
+
+                    <div class="monkey-eye left-eye"></div>
+
+                    <div class="monkey-eye right-eye"></div>
+
+
+                    <div class="monkey-muzzle">
+
+                        <div class="monkey-nose"></div>
+
+                        <div class="monkey-mouth"></div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ================= DUCK ================= -->
+
+        <div class="cartoon duck">
+
+
+            <div class="duck-body">
+
+                <div class="duck-wing duck-wing-left"></div>
+
+                <div class="duck-wing duck-wing-right"></div>
+
+                <div class="duck-leg duck-leg-left"></div>
+
+                <div class="duck-leg duck-leg-right"></div>
 
             </div>
 
 
-            <div class="character duck">
-                <div class="character-body">
-                    🦆
-                </div>
-                <div class="character-name">
-                    Duck
-                </div>
+            <div class="duck-head">
+
+                <div class="duck-eye"></div>
+
+                <div class="duck-beak"></div>
+
+                <div class="duck-cheek"></div>
+
             </div>
 
-        </div>
-
-
-        <!-- HEART BURST -->
-
-        <div class="heart-burst">
-            <span>❤️</span>
-            <span>💕</span>
-            <span>💗</span>
-            <span>❤️</span>
-            <span>💖</span>
-            <span>💕</span>
-            <span>❤️</span>
-            <span>💗</span>
-        </div>
-
-
-        <!-- BIRTHDAY TEXT -->
-
-        <div class="birthday-text">
-
-            <h1>
-                Happy Birthday
-                <span>Tiku</span> ❤️
-            </h1>
-
-            <p>
-                My favourite Duck,
-                from your Monkey. 🐒❤️🦆
-            </p>
-
-            <small>
-                Some people become a part of your life...
-                <br>
-                and some people become your life.
-            </small>
 
         </div>
 
+    </div>
 
-        <button class="begin-button" onclick="beginStory()">
+
+    <!-- =================================================
+         HUG HEART
+    ================================================= -->
+
+    <div class="hug-heart">
+
+        ❤️
+
+    </div>
+
+
+    <!-- =================================================
+         HEART BURST
+    ================================================= -->
+
+    <div class="heart-burst">
+
+        <span>❤️</span>
+        <span>💕</span>
+        <span>💗</span>
+        <span>💖</span>
+        <span>❤️</span>
+        <span>💕</span>
+        <span>💗</span>
+        <span>💓</span>
+        <span>❤️</span>
+        <span>💖</span>
+        <span>💕</span>
+        <span>❤️</span>
+
+    </div>
+
+
+    <!-- =================================================
+         BIRTHDAY MESSAGE
+    ================================================= -->
+
+    <div class="birthday-content">
+
+
+        <div class="birthday-small">
+
+            HAPPY BIRTHDAY
+
+        </div>
+
+
+        <h1>
+
+            Happy Birthday
+            <span>Tiku</span>
+            ❤️
+
+        </h1>
+
+
+        <p class="personal-message">
+
+            Mur priyo Patihah,
+            from your Bandor. 🐒❤️🦆
+
+        </p>
+
+
+        <p class="quote">
+
+            Some people become a part of your life...
+
+            <br>
+
+            and some people become your life.
+
+        </p>
+
+
+        <button
+            class="begin-button"
+            onclick="beginStory()"
+        >
+
             ✨ Begin Our Story ❤️
+
         </button>
 
 
-        <div class="music-note">
-            ♪
+    </div>
+
+
+    <div class="music-symbol">
+
+        ♪
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     STORY
+===================================================== -->
+
+<main id="story">
+
+
+    <!-- =================================================
+         CHAPTER 01
+    ================================================= -->
+
+    <section class="chapter childhood">
+
+
+        <div class="chapter-number">
+
+            CHAPTER 01
+
+        </div>
+
+
+        <h2>
+
+            Before There Was "Us"... 🌱
+
+        </h2>
+
+
+        <p class="chapter-intro">
+
+            There was a little girl who had no idea
+            that one day she would become someone's
+            favourite person.
+
+        </p>
+
+
+        <div class="timeline">
+
+
+            <div class="timeline-item">
+
+
+                <div class="timeline-photo">
+
+                    <div class="photo-placeholder">
+
+                        📸
+
+                    </div>
+
+                </div>
+
+
+                <div class="timeline-text">
+
+                    <span>
+
+                        THE BEGINNING
+
+                    </span>
+
+
+                    <h3>
+
+                        You were little once... 🥹
+
+                    </h3>
+
+
+                    <p>
+
+                        Look how tiny you were.
+
+                        And somehow, this little girl
+                        grew up to become the person
+                        I love today.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="timeline-item reverse">
+
+
+                <div class="timeline-photo">
+
+                    <div class="photo-placeholder">
+
+                        📸
+
+                    </div>
+
+                </div>
+
+
+                <div class="timeline-text">
+
+                    <span>
+
+                        GROWING UP
+
+                    </span>
+
+
+                    <h3>
+
+                        And then you grew...
+
+                    </h3>
+
+
+                    <p>
+
+                        From those little childhood
+                        moments to the beautiful person
+                        you are today.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
         </div>
 
     </section>
 
 
 
-    <!-- ============================= -->
-    <!-- STORY -->
-    <!-- ============================= -->
+    <!-- =================================================
+         CHAPTER 02
+    ================================================= -->
 
-    <main id="story">
-
-
-        <!-- CHILDHOOD -->
-
-        <section class="chapter childhood">
-
-            <div class="chapter-number">
-                CHAPTER 01
-            </div>
-
-            <h2>
-                Before There Was "Us"... 🌱
-            </h2>
-
-            <p class="chapter-intro">
-                There was a little girl who had no idea
-                that one day she would become someone's
-                favourite person.
-            </p>
+    <section class="chapter our-story">
 
 
-            <div class="timeline">
+        <div class="chapter-number">
 
-                <div class="timeline-item">
+            CHAPTER 02
 
-                    <div class="timeline-photo">
-                        <div class="photo-placeholder">
-                            📸
-                        </div>
-                    </div>
+        </div>
 
-                    <div class="timeline-text">
 
-                        <span>
-                            THE BEGINNING
-                        </span>
+        <h2>
 
-                        <h3>
-                            You were little once... 🥹
-                        </h3>
+            And Then There Was Us... 💕
 
-                        <p>
-                            Look how tiny you were.
-                            And somehow, this little girl
-                            grew up to become the person
-                            I love today.
-                        </p>
+        </h2>
 
-                    </div>
+
+        <p class="chapter-intro">
+
+            Somewhere between two people,
+            countless conversations,
+            and thousands of little moments...
+            we became "us".
+
+        </p>
+
+
+        <div class="story-line">
+
+
+            <div class="story-event">
+
+
+                <div class="event-dot">
+
+                    ❤️
 
                 </div>
 
-
-                <div class="timeline-item reverse">
-
-                    <div class="timeline-photo">
-                        <div class="photo-placeholder">
-                            📸
-                        </div>
-                    </div>
-
-                    <div class="timeline-text">
-
-                        <span>
-                            GROWING UP
-                        </span>
-
-                        <h3>
-                            And then you grew...
-                        </h3>
-
-                        <p>
-                            From those little childhood
-                            moments to the beautiful person
-                            you are today.
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- OUR STORY -->
-
-        <section class="chapter our-story">
-
-            <div class="chapter-number">
-                CHAPTER 02
-            </div>
-
-            <h2>
-                And Then There Was Us... 💕
-            </h2>
-
-            <p class="chapter-intro">
-                Somewhere between two people,
-                countless conversations,
-                and thousands of little moments...
-                we became "us".
-            </p>
-
-
-            <div class="story-line">
-
-                <div class="story-event">
-
-                    <div class="event-dot">
-                        ❤️
-                    </div>
-
-                    <div>
-                        <small>
-                            THE BEGINNING
-                        </small>
-
-                        <h3>
-                            The day we met
-                        </h3>
-
-                        <p>
-                            This is where our story started.
-                        </p>
-                    </div>
-
-                </div>
-
-
-                <div class="story-event">
-
-                    <div class="event-dot">
-                        💬
-                    </div>
-
-                    <div>
-                        <small>
-                            FIRST CONVERSATIONS
-                        </small>
-
-                        <h3>
-                            We started talking...
-                        </h3>
-
-                        <p>
-                            And somehow,
-                            conversations became memories.
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <div class="story-event">
-
-                    <div class="event-dot">
-                        🥰
-                    </div>
-
-                    <div>
-                        <small>
-                            SOMEWHERE ALONG THE WAY
-                        </small>
-
-                        <h3>
-                            We became us.
-                        </h3>
-
-                        <p>
-                            And I wouldn't change
-                            a single thing.
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- MEMORIES -->
-
-        <section class="chapter memories">
-
-            <div class="chapter-number">
-                CHAPTER 03
-            </div>
-
-            <h2>
-                Our Little Moments 📸
-            </h2>
-
-            <p class="chapter-intro">
-                The moments that look ordinary
-                but mean everything to me.
-            </p>
-
-
-            <div class="gallery">
-
-                <div class="memory-card">
-                    <div class="gallery-placeholder">
-                        📸
-                    </div>
-                    <p>Our favourite memory ❤️</p>
-                </div>
-
-                <div class="memory-card">
-                    <div class="gallery-placeholder">
-                        📸
-                    </div>
-                    <p>That silly moment 😂</p>
-                </div>
-
-                <div class="memory-card">
-                    <div class="gallery-placeholder">
-                        📸
-                    </div>
-                    <p>Just us 💕</p>
-                </div>
-
-                <div class="memory-card">
-                    <div class="gallery-placeholder">
-                        📸
-                    </div>
-                    <p>A day I'll never forget</p>
-                </div>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- CHATS -->
-
-        <section class="chapter chats">
-
-            <div class="chapter-number">
-                CHAPTER 04
-            </div>
-
-            <h2>
-                Our Conversations 💬
-            </h2>
-
-            <p class="chapter-intro">
-                Some conversations deserve to be remembered forever.
-            </p>
-
-
-            <div class="chat-box">
-
-                <div class="message mine">
-                    What are you doing? ❤️
-                </div>
-
-                <div class="message theirs">
-                    Nothinggg 😂
-                </div>
-
-                <div class="message mine">
-                    I miss you.
-                </div>
-
-                <div class="message theirs">
-                    Already? 😭❤️
-                </div>
-
-                <div class="message mine">
-                    Always.
-                </div>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- VOICE -->
-
-        <section class="chapter voice">
-
-            <div class="chapter-number">
-                CHAPTER 05
-            </div>
-
-            <h2>
-                Your Voice 🎙️
-            </h2>
-
-            <p class="chapter-intro">
-                A voice I could listen to forever.
-            </p>
-
-
-            <div class="audio-card">
-
-                <div class="audio-icon">
-                    🎙️
-                </div>
 
                 <div>
+
+                    <small>
+
+                        THE BEGINNING
+
+                    </small>
+
+
                     <h3>
-                        Your favourite voice message
+
+                        The day we met
+
                     </h3>
 
+
                     <p>
-                        Replace this with your audio.
+
+                        This is where our story started.
+
                     </p>
+
                 </div>
 
-                <button>
-                    ▶
-                </button>
+            </div>
+
+
+
+            <div class="story-event">
+
+
+                <div class="event-dot">
+
+                    💬
+
+                </div>
+
+
+                <div>
+
+                    <small>
+
+                        FIRST CONVERSATIONS
+
+                    </small>
+
+
+                    <h3>
+
+                        We started talking...
+
+                    </h3>
+
+
+                    <p>
+
+                        And somehow,
+                        conversations became memories.
+
+                    </p>
+
+                </div>
 
             </div>
 
-        </section>
 
 
+            <div class="story-event">
 
-        <!-- VIDEOS -->
 
-        <section class="chapter videos">
+                <div class="event-dot">
 
-            <div class="chapter-number">
-                CHAPTER 06
+                    🥰
+
+                </div>
+
+
+                <div>
+
+                    <small>
+
+                        SOMEWHERE ALONG THE WAY
+
+                    </small>
+
+
+                    <h3>
+
+                        We became us.
+
+                    </h3>
+
+
+                    <p>
+
+                        And I wouldn't change
+                        a single thing.
+
+                    </p>
+
+                </div>
+
             </div>
 
-            <h2>
-                Moving Memories 🎬
-            </h2>
 
-            <p class="chapter-intro">
-                Because some memories are better
-                when they move.
-            </p>
+        </div>
+
+    </section>
 
 
-            <div class="video-placeholder">
-                <span>▶</span>
+
+    <!-- =================================================
+         CHAPTER 03
+    ================================================= -->
+
+    <section class="chapter memories">
+
+
+        <div class="chapter-number">
+
+            CHAPTER 03
+
+        </div>
+
+
+        <h2>
+
+            Our Little Moments 📸
+
+        </h2>
+
+
+        <p class="chapter-intro">
+
+            The moments that look ordinary
+            but mean everything to me.
+
+        </p>
+
+
+        <div class="gallery">
+
+
+            <div class="memory-card">
+
+                <div class="gallery-placeholder">
+
+                    📸
+
+                </div>
 
                 <p>
-                    Your special video will live here.
+
+                    Our favourite memory ❤️
+
                 </p>
-            </div>
-
-        </section>
-
-
-
-        <!-- LOVE -->
-
-        <section class="chapter love">
-
-            <div class="chapter-number">
-                CHAPTER 07
-            </div>
-
-            <h2>
-                Things I Love About You 💌
-            </h2>
-
-
-            <div class="love-grid">
-
-                <div class="love-card">
-                    <span>01</span>
-                    <h3>Your smile</h3>
-                    <p>
-                        It can make even my worst
-                        days feel better.
-                    </p>
-                </div>
-
-
-                <div class="love-card">
-                    <span>02</span>
-                    <h3>Your voice</h3>
-                    <p>
-                        My favourite sound.
-                    </p>
-                </div>
-
-
-                <div class="love-card">
-                    <span>03</span>
-                    <h3>Your little habits</h3>
-                    <p>
-                        Even the silly ones
-                        I pretend to complain about.
-                    </p>
-                </div>
-
-
-                <div class="love-card">
-                    <span>04</span>
-                    <h3>You</h3>
-                    <p>
-                        Simply you.
-                        That's enough.
-                    </p>
-                </div>
 
             </div>
 
-        </section>
 
+            <div class="memory-card">
 
+                <div class="gallery-placeholder">
 
-        <!-- PROMISES -->
+                    📸
 
-        <section class="chapter promises">
+                </div>
 
-            <div class="chapter-number">
-                CHAPTER 08
+                <p>
+
+                    That silly moment 😂
+
+                </p>
+
             </div>
 
-            <h2>
-                Our Promises 🤞
-            </h2>
+
+            <div class="memory-card">
+
+                <div class="gallery-placeholder">
+
+                    📸
+
+                </div>
+
+                <p>
+
+                    Just us 💕
+
+                </p>
+
+            </div>
 
 
-            <div class="promise">
+            <div class="memory-card">
 
-                <span>
-                    PROMISE 01
-                </span>
+                <div class="gallery-placeholder">
+
+                    📸
+
+                </div>
+
+                <p>
+
+                    A day I'll never forget
+
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         CHAPTER 04
+    ================================================= -->
+
+    <section class="chapter chats">
+
+
+        <div class="chapter-number">
+
+            CHAPTER 04
+
+        </div>
+
+
+        <h2>
+
+            Our Conversations 💬
+
+        </h2>
+
+
+        <p class="chapter-intro">
+
+            Some conversations deserve
+            to be remembered forever.
+
+        </p>
+
+
+        <div class="chat-box">
+
+
+            <div class="message mine">
+
+                What are you doing? ❤️
+
+            </div>
+
+
+            <div class="message theirs">
+
+                Nothinggg 😂
+
+            </div>
+
+
+            <div class="message mine">
+
+                I miss you.
+
+            </div>
+
+
+            <div class="message theirs">
+
+                Already? 😭❤️
+
+            </div>
+
+
+            <div class="message mine">
+
+                Always.
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         CHAPTER 05
+    ================================================= -->
+
+    <section class="chapter voice">
+
+
+        <div class="chapter-number">
+
+            CHAPTER 05
+
+        </div>
+
+
+        <h2>
+
+            Your Voice 🎙️
+
+        </h2>
+
+
+        <p class="chapter-intro">
+
+            A voice I could listen to forever.
+
+        </p>
+
+
+        <div class="audio-card">
+
+
+            <div class="audio-icon">
+
+                🎙️
+
+            </div>
+
+
+            <div>
 
                 <h3>
-                    I'll always try to make you smile.
+
+                    Your favourite voice message
+
                 </h3>
 
-            </div>
 
+                <p>
 
-            <div class="promise">
+                    Your voice belongs here.
 
-                <span>
-                    PROMISE 02
-                </span>
-
-                <h3>
-                    I'll stand beside you through
-                    the difficult days.
-                </h3>
+                </p>
 
             </div>
 
 
-            <div class="promise">
+            <button>
 
-                <span>
-                    PROMISE 03
-                </span>
+                ▶
 
-                <h3>
-                    I'll keep choosing you.
-                </h3>
+            </button>
 
-            </div>
 
-        </section>
+        </div>
+
+    </section>
 
 
 
-        <!-- FINAL -->
+    <!-- =================================================
+         CHAPTER 06
+    ================================================= -->
 
-        <section class="final">
+    <section class="chapter videos">
 
-            <div class="final-hearts">
-                ❤️ 💕 ❤️
-            </div>
+
+        <div class="chapter-number">
+
+            CHAPTER 06
+
+        </div>
+
+
+        <h2>
+
+            Moving Memories 🎬
+
+        </h2>
+
+
+        <p class="chapter-intro">
+
+            Because some memories are better
+            when they move.
+
+        </p>
+
+
+        <div class="video-placeholder">
+
+
+            <span>
+
+                ▶
+
+            </span>
+
 
             <p>
-                AND THIS IS ONLY THE BEGINNING...
+
+                Our special videos will live here.
+
             </p>
 
-            <h2>
-                Happy Birthday,
-                Tiku ❤️
-            </h2>
 
-            <div class="final-message">
+        </div>
 
-                <p>
-                    Thank you for being you.
-                </p>
+    </section>
 
-                <p>
-                    Thank you for every laugh,
-                    every conversation,
-                    every memory,
-                    every little moment.
-                </p>
 
-                <p>
-                    And if I could choose again...
-                </p>
+
+    <!-- =================================================
+         CHAPTER 07
+    ================================================= -->
+
+    <section class="chapter love">
+
+
+        <div class="chapter-number">
+
+            CHAPTER 07
+
+        </div>
+
+
+        <h2>
+
+            Things I Love About You 💌
+
+        </h2>
+
+
+        <div class="love-grid">
+
+
+            <div class="love-card">
+
+                <span>01</span>
 
                 <h3>
-                    I'd still choose you. ❤️
+
+                    Your smile
+
                 </h3>
 
+                <p>
+
+                    It can make even my worst
+                    days feel better.
+
+                </p>
+
             </div>
 
 
-            <div class="signature">
-                Forever yours,<br>
-                <strong>Your Monkey 🐒</strong>
+            <div class="love-card">
+
+                <span>02</span>
+
+                <h3>
+
+                    Your voice
+
+                </h3>
+
+                <p>
+
+                    My favourite sound.
+
+                </p>
+
             </div>
 
-        </section>
 
-    </main>
+            <div class="love-card">
+
+                <span>03</span>
+
+                <h3>
+
+                    Your little habits
+
+                </h3>
+
+                <p>
+
+                    Even the silly ones
+                    I pretend to complain about.
+
+                </p>
+
+            </div>
 
 
-    <script src="script.js"></script>
+            <div class="love-card">
+
+                <span>04</span>
+
+                <h3>
+
+                    You
+
+                </h3>
+
+                <p>
+
+                    Simply you.
+                    That's enough.
+
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         CHAPTER 08
+    ================================================= -->
+
+    <section class="chapter promises">
+
+
+        <div class="chapter-number">
+
+            CHAPTER 08
+
+        </div>
+
+
+        <h2>
+
+            Our Promises 🤞
+
+        </h2>
+
+
+        <div class="promise">
+
+            <span>
+
+                PROMISE 01
+
+            </span>
+
+
+            <h3>
+
+                I'll always try to make you smile.
+
+            </h3>
+
+        </div>
+
+
+        <div class="promise">
+
+            <span>
+
+                PROMISE 02
+
+            </span>
+
+
+            <h3>
+
+                I'll stand beside you through
+                the difficult days.
+
+            </h3>
+
+        </div>
+
+
+        <div class="promise">
+
+            <span>
+
+                PROMISE 03
+
+            </span>
+
+
+            <h3>
+
+                I'll keep choosing you.
+
+            </h3>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =================================================
+         FINAL
+    ================================================= -->
+
+    <section class="final">
+
+
+        <div class="final-hearts">
+
+            ❤️ 💕 ❤️
+
+        </div>
+
+
+        <p>
+
+            AND THIS IS ONLY THE BEGINNING...
+
+        </p>
+
+
+        <h2>
+
+            Happy Birthday,
+            Tiku ❤️
+
+        </h2>
+
+
+        <div class="final-message">
+
+
+            <p>
+
+                Thank you for being you.
+
+            </p>
+
+
+            <p>
+
+                Thank you for every laugh,
+                every conversation,
+                every memory,
+                every little moment.
+
+            </p>
+
+
+            <p>
+
+                And if I could choose again...
+
+            </p>
+
+
+            <h3>
+
+                I'd still choose you. ❤️
+
+            </h3>
+
+
+        </div>
+
+
+        <div class="signature">
+
+            Forever yours,
+
+            <br>
+
+            <strong>
+
+                Your Bandor 🐒
+
+            </strong>
+
+        </div>
+
+
+    </section>
+
+
+</main>
+
+
+<script src="script.js"></script>
 
 </body>
+
 </html>
