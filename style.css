@@ -8,14 +8,26 @@
     box-sizing: border-box;
 }
 
-html {
-    scroll-behavior: smooth;
+html,
+body {
+    width: 100%;
+    height: 100%;
 }
 
 body {
-    background: #050307;
+    background:
+        radial-gradient(
+            circle at center,
+            #3b0619 0%,
+            #17050d 35%,
+            #050505 75%,
+            #000000 100%
+        );
+
     color: white;
+
     font-family: Georgia, "Times New Roman", serif;
+
     overflow-x: hidden;
 }
 
@@ -25,98 +37,24 @@ body {
 ========================================= */
 
 .opening-screen {
-    position: relative;
-    width: 100%;
+
     min-height: 100vh;
-    min-height: 100svh;
+
+    width: 100%;
 
     display: flex;
+
     flex-direction: column;
+
     align-items: center;
 
+    justify-content: flex-start;
+
+    position: relative;
+
+    padding: 35px 20px 50px;
+
     overflow: hidden;
-
-    background:
-        radial-gradient(
-            circle at 50% 42%,
-            rgba(130, 10, 45, 0.45),
-            rgba(25, 3, 15, 0.35) 30%,
-            #050307 72%
-        );
-
-    isolation: isolate;
-}
-
-
-/* =========================================
-   BACKGROUND GLOW
-========================================= */
-
-.background-glow {
-    position: absolute;
-
-    width: 600px;
-    height: 600px;
-
-    top: 20%;
-    left: 50%;
-
-    transform: translateX(-50%);
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(255, 40, 100, 0.18),
-            transparent 65%
-        );
-
-    filter: blur(30px);
-
-    pointer-events: none;
-
-    z-index: -1;
-}
-
-
-/* =========================================
-   STARS
-========================================= */
-
-.stars {
-    position: absolute;
-    inset: 0;
-
-    pointer-events: none;
-
-    background-image:
-        radial-gradient(circle, rgba(255,255,255,0.8) 1px, transparent 1px),
-        radial-gradient(circle, rgba(255,150,190,0.7) 1px, transparent 1px),
-        radial-gradient(circle, rgba(255,255,255,0.5) 1px, transparent 1px);
-
-    background-size:
-        90px 90px,
-        130px 130px,
-        170px 170px;
-
-    background-position:
-        10px 20px,
-        50px 80px,
-        20px 100px;
-
-    opacity: 0.25;
-
-    animation: starsMove 15s linear infinite;
-}
-
-@keyframes starsMove {
-
-    from {
-        transform: translateY(0);
-    }
-
-    to {
-        transform: translateY(-80px);
-    }
 }
 
 
@@ -126,34 +64,31 @@ body {
 
 .intro-text {
 
-    margin-top: 70px;
+    font-family: Arial, sans-serif;
 
-    font-size: 14px;
+    font-size: 13px;
+
+    font-weight: 700;
 
     letter-spacing: 4px;
 
     text-align: center;
 
-    text-transform: uppercase;
+    color: rgba(255,255,255,0.9);
 
-    color: rgba(255,255,255,0.82);
+    margin-bottom: 25px;
 
-    opacity: 0;
-
-    animation:
-        introAppear 1.2s ease forwards;
-
-    animation-delay: 0.3s;
+    animation: introAppear 2s ease forwards;
 }
 
 @keyframes introAppear {
 
-    from {
+    0% {
         opacity: 0;
-        transform: translateY(15px);
+        transform: translateY(-15px);
     }
 
-    to {
+    100% {
         opacity: 1;
         transform: translateY(0);
     }
@@ -161,277 +96,88 @@ body {
 
 
 /* =========================================
-   CHARACTER STAGE
+   ANIMATION AREA
 ========================================= */
 
-.character-stage {
+.animation-area {
+
+    width: 100%;
+
+    max-width: 700px;
+
+    height: 230px;
 
     position: relative;
 
-    width: min(900px, 100%);
-    height: 380px;
-
-    margin-top: 35px;
-
     display: flex;
-    align-items: center;
+
     justify-content: center;
 
-    overflow: visible;
+    align-items: center;
+
+    overflow: hidden;
+
+    z-index: 10;
 }
 
 
 /* =========================================
-   CHARACTERS
+   MONKEY + DUCK
 ========================================= */
 
 .character {
 
     position: absolute;
 
-    width: 190px;
+    width: 150px;
 
-    max-height: 280px;
+    max-height: 180px;
 
     object-fit: contain;
 
     opacity: 0;
 
-    z-index: 5;
+    z-index: 20;
 
     filter:
-        drop-shadow(0 15px 20px rgba(0,0,0,0.45));
+        drop-shadow(0 10px 20px rgba(255, 50, 100, 0.25));
+}
+
+
+/* Monkey starts outside LEFT */
+
+.monkey {
+
+    left: -180px;
+
+    animation:
+        monkeyEnter 2s ease-in-out 2s forwards,
+        monkeyDisappear 0.5s ease 4.8s forwards;
+}
+
+
+/* Duck starts outside RIGHT */
+
+.duck {
+
+    right: -180px;
+
+    animation:
+        duckEnter 2s ease-in-out 2s forwards,
+        duckDisappear 0.5s ease 4.8s forwards;
 }
 
 
 /* =========================================
-   MONKEY ENTERS FROM LEFT
+   MONKEY MOVEMENT
 ========================================= */
-
-.monkey {
-
-    left: -250px;
-
-    transform: translateX(-100px) rotate(-8deg);
-
-    animation:
-        monkeyEnter 2.5s cubic-bezier(.22,.8,.25,1) forwards;
-
-    animation-delay: 1.8s;
-}
 
 @keyframes monkeyEnter {
 
     0% {
         opacity: 0;
-        left: -250px;
-        transform: translateX(-80px) rotate(-12deg);
-    }
-
-    15% {
-        opacity: 1;
-    }
-
-    70% {
-        transform: translateX(0) rotate(5deg);
-    }
-
-    100% {
-        opacity: 1;
-        left: calc(50% - 175px);
-        transform: translateX(0) rotate(0deg);
-    }
-}
-
-
-/* =========================================
-   DUCK ENTERS FROM RIGHT
-========================================= */
-
-.duck {
-
-    right: -250px;
-
-    transform: translateX(100px) rotate(8deg);
-
-    animation:
-        duckEnter 2.5s cubic-bezier(.22,.8,.25,1) forwards;
-
-    animation-delay: 1.8s;
-}
-
-@keyframes duckEnter {
-
-    0% {
-        opacity: 0;
-        right: -250px;
-        transform: translateX(80px) rotate(12deg);
-    }
-
-    15% {
-        opacity: 1;
-    }
-
-    70% {
-        transform: translateX(0) rotate(-5deg);
-    }
-
-    100% {
-        opacity: 1;
-        right: calc(50% - 175px);
-        transform: translateX(0) rotate(0deg);
-    }
-}
-
-
-/* =========================================
-   HUG CHARACTER
-========================================= */
-
-.hug-character {
-
-    position: absolute;
-
-    width: 300px;
-    max-width: 55vw;
-
-    object-fit: contain;
-
-    opacity: 0;
-
-    z-index: 10;
-
-    transform: scale(0.3);
-
-    filter:
-        drop-shadow(0 20px 30px rgba(255,20,100,0.35));
-
-    animation:
-        hugAppear 1.2s ease forwards;
-
-    animation-delay: 4.7s;
-}
-
-@keyframes hugAppear {
-
-    0% {
-        opacity: 0;
-        transform: scale(0.3) rotate(-5deg);
-    }
-
-    55% {
-        opacity: 1;
-        transform: scale(1.12) rotate(2deg);
-    }
-
-    75% {
-        transform: scale(0.96) rotate(-1deg);
-    }
-
-    100% {
-        opacity: 1;
-        transform: scale(1) rotate(0);
-    }
-}
-
-
-/* =========================================
-   HIDE CHARACTERS AFTER HUG
-========================================= */
-
-.monkey,
-.duck {
-
-    animation-fill-mode: forwards;
-}
-
-
-/* =========================================
-   HEART BURST
-========================================= */
-
-.heart-burst {
-
-    position: absolute;
-
-    left: 50%;
-    top: 50%;
-
-    width: 1px;
-    height: 1px;
-
-    z-index: 20;
-
-    pointer-events: none;
-}
-
-.heart {
-
-    position: absolute;
-
-    left: 0;
-    top: 0;
-
-    font-size: 26px;
-
-    opacity: 0;
-
-    animation:
-        heartExplosion 1.7s ease-out forwards;
-
-    animation-delay: 4.9s;
-}
-
-
-/* Different directions */
-
-.h1 {
-    --x: -190px;
-    --y: -130px;
-}
-
-.h2 {
-    --x: 190px;
-    --y: -120px;
-}
-
-.h3 {
-    --x: -220px;
-    --y: 10px;
-}
-
-.h4 {
-    --x: 220px;
-    --y: 30px;
-}
-
-.h5 {
-    --x: -130px;
-    --y: 150px;
-}
-
-.h6 {
-    --x: 130px;
-    --y: 160px;
-}
-
-.h7 {
-    --x: -80px;
-    --y: -190px;
-}
-
-.h8 {
-    --x: 80px;
-    --y: -200px;
-}
-
-@keyframes heartExplosion {
-
-    0% {
-        opacity: 0;
-        transform:
-            translate(-50%, -50%)
-            scale(0.2);
+        left: -180px;
+        transform: scale(0.7) rotate(-8deg);
     }
 
     20% {
@@ -439,104 +185,127 @@ body {
     }
 
     100% {
-        opacity: 0;
-        transform:
-            translate(
-                calc(-50% + var(--x)),
-                calc(-50% + var(--y))
-            )
-            scale(1.2);
+        opacity: 1;
+        left: calc(50% - 125px);
+        transform: scale(1) rotate(0deg);
     }
 }
 
 
 /* =========================================
-   TIKU PHOTO
+   DUCK MOVEMENT
 ========================================= */
 
-.tiku-photo-container {
+@keyframes duckEnter {
 
-    position: absolute;
+    0% {
+        opacity: 0;
+        right: -180px;
+        transform: scale(0.7) rotate(8deg);
+    }
 
-    top: 42%;
+    20% {
+        opacity: 1;
+    }
 
-    left: 50%;
-
-    width: min(430px, 70vw);
-
-    aspect-ratio: 3 / 4;
-
-    transform:
-        translate(-50%, -50%)
-        scale(0.85);
-
-    opacity: 0;
-
-    z-index: 2;
-
-    animation:
-        photoAppear 1.8s ease forwards;
-
-    animation-delay: 5.5s;
-
-    pointer-events: none;
-}
-
-.tiku-photo {
-
-    position: relative;
-
-    width: 100%;
-    height: 100%;
-
-    object-fit: cover;
-
-    border-radius: 25px;
-
-    display: block;
-
-    box-shadow:
-        0 0 50px rgba(255,50,120,0.35);
-
-    opacity: 0.42;
-
-    filter:
-        brightness(0.8)
-        saturate(1.15);
+    100% {
+        opacity: 1;
+        right: calc(50% - 125px);
+        transform: scale(1) rotate(0deg);
+    }
 }
 
 
 /* =========================================
-   PHOTO GLOW
+   CHARACTERS DISAPPEAR
 ========================================= */
 
-.photo-glow {
+@keyframes monkeyDisappear {
+
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(0.7);
+    }
+}
+
+@keyframes duckDisappear {
+
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(0.7);
+    }
+}
+
+
+/* =========================================
+   HUG IMAGE
+========================================= */
+
+.hug-character {
 
     position: absolute;
 
-    inset: -30px;
+    width: 210px;
 
-    border-radius: 50%;
+    height: 210px;
 
-    background:
-        radial-gradient(
-            circle,
-            rgba(255,40,120,0.35),
-            transparent 65%
-        );
+    object-fit: contain;
 
-    filter: blur(30px);
+    left: 50%;
 
-    z-index: -1;
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%)
+        scale(0.3);
+
+    opacity: 0;
+
+    z-index: 30;
+
+    filter:
+        drop-shadow(0 0 25px rgba(255, 60, 120, 0.6));
+
+    animation:
+        hugAppear 1.2s
+        ease-out
+        4.5s
+        forwards;
 }
 
-@keyframes photoAppear {
+
+@keyframes hugAppear {
 
     0% {
         opacity: 0;
         transform:
             translate(-50%, -50%)
-            scale(0.85);
+            scale(0.3)
+            rotate(-8deg);
+    }
+
+    50% {
+        opacity: 1;
+        transform:
+            translate(-50%, -50%)
+            scale(1.15)
+            rotate(3deg);
+    }
+
+    75% {
+        transform:
+            translate(-50%, -50%)
+            scale(0.95);
     }
 
     100% {
@@ -549,39 +318,148 @@ body {
 
 
 /* =========================================
-   BIRTHDAY MESSAGE
+   TIKU PHOTO
 ========================================= */
 
-.birthday-message {
+.tiku-photo-container {
 
     position: relative;
 
-    z-index: 30;
+    width: 270px;
 
-    margin-top: -10px;
+    height: 270px;
 
-    width: min(900px, 92%);
+    margin-top: 10px;
 
-    text-align: center;
+    border-radius: 28px;
+
+    padding: 7px;
 
     opacity: 0;
 
-    transform: translateY(30px);
+    transform: translateY(30px) scale(0.85);
+
+    z-index: 40;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff,
+            #ffb6c9,
+            #ffffff
+        );
+
+    box-shadow:
+        0 0 30px rgba(255, 80, 130, 0.35),
+        0 0 70px rgba(255, 30, 100, 0.15);
 
     animation:
-        messageAppear 1.5s ease forwards;
+        photoAppear 1.5s
+        ease-out
+        6s
+        forwards;
 
-    animation-delay: 6.8s;
+    overflow: hidden;
 }
 
-@keyframes messageAppear {
 
-    from {
+.tiku-photo {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+    border-radius: 22px;
+}
+
+
+/* Soft glow behind photo */
+
+.photo-glow {
+
+    position: absolute;
+
+    width: 100%;
+
+    height: 100%;
+
+    left: 0;
+
+    top: 0;
+
+    border-radius: 28px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255, 80, 140, 0.45),
+            transparent 70%
+        );
+
+    filter: blur(25px);
+
+    z-index: -1;
+}
+
+
+@keyframes photoAppear {
+
+    0% {
         opacity: 0;
-        transform: translateY(30px);
+        transform:
+            translateY(30px)
+            scale(0.85);
     }
 
-    to {
+    100% {
+        opacity: 1;
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+/* =========================================
+   BIRTHDAY CONTENT
+========================================= */
+
+.birthday-content {
+
+    width: 100%;
+
+    max-width: 900px;
+
+    text-align: center;
+
+    margin-top: 30px;
+
+    position: relative;
+
+    z-index: 50;
+
+    opacity: 0;
+
+    animation:
+        contentAppear 1.5s
+        ease
+        6.5s
+        forwards;
+}
+
+
+@keyframes contentAppear {
+
+    0% {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    100% {
         opacity: 1;
         transform: translateY(0);
     }
@@ -592,36 +470,37 @@ body {
    TITLE
 ========================================= */
 
-.birthday-message h1 {
+.birthday-content h1 {
 
-    font-size: clamp(42px, 7vw, 82px);
+    font-size: clamp(42px, 7vw, 78px);
 
     line-height: 1.1;
 
-    font-weight: 500;
+    margin-bottom: 18px;
 
     color: #fff;
 
     text-shadow:
-        0 0 10px rgba(255,255,255,0.5),
-        0 0 35px rgba(255,40,100,0.65);
+        0 0 10px rgba(255,255,255,0.8),
+        0 0 30px rgba(255,80,130,0.7);
 
-    margin-bottom: 15px;
+    font-weight: 700;
 }
 
-.birthday-message h1 span {
+
+.birthday-content h1 span {
 
     display: inline-block;
 
     animation:
-        heartBeat 1.3s infinite;
-
+        heartBeat 1.2s
+        infinite;
 }
+
 
 @keyframes heartBeat {
 
-    0%,
-    100% {
+    0%, 100% {
         transform: scale(1);
     }
 
@@ -637,50 +516,43 @@ body {
 
 .love-line {
 
-    font-size: clamp(18px, 3vw, 25px);
+    font-size: 22px;
 
     line-height: 1.6;
 
-    color: #ffe4ed;
+    color: #ffe5ec;
 
-    text-shadow:
-        0 0 15px rgba(255,50,120,0.4);
+    margin-bottom: 20px;
 }
 
 
 /* =========================================
-   SMALL MESSAGE
+   QUOTE
 ========================================= */
 
-.small-message {
+.quote {
 
-    margin-top: 15px;
+    font-size: 15px;
 
-    font-family:
-        Arial,
-        sans-serif;
+    line-height: 1.6;
 
-    font-size: 14px;
+    color: rgba(255,255,255,0.75);
 
-    line-height: 1.7;
-
-    color: rgba(255,255,255,0.72);
+    margin-bottom: 30px;
 }
 
 
 /* =========================================
-   BEGIN STORY BUTTON
+   BUTTON
 ========================================= */
 
-.story-button {
+#beginStory {
 
-    margin-top: 28px;
-
-    padding: 15px 30px;
+    padding: 14px 28px;
 
     border-radius: 50px;
 
-    border: 1px solid rgba(255,255,255,0.55);
+    border: 1px solid rgba(255,255,255,0.6);
 
     background:
         rgba(255,255,255,0.08);
@@ -693,73 +565,123 @@ body {
 
     backdrop-filter: blur(10px);
 
-    transition:
-        transform 0.3s ease,
-        background 0.3s ease,
-        box-shadow 0.3s ease;
-}
-
-.story-button:hover {
-
-    transform: translateY(-4px) scale(1.03);
-
-    background:
-        rgba(255,70,130,0.25);
+    transition: 0.3s;
 
     box-shadow:
-        0 10px 35px rgba(255,30,100,0.3);
+        0 0 20px rgba(255,80,130,0.2);
 }
 
-.story-button:active {
 
-    transform: scale(0.97);
+#beginStory:hover {
+
+    transform: scale(1.07);
+
+    background:
+        rgba(255,80,130,0.2);
+
+    box-shadow:
+        0 0 30px rgba(255,80,130,0.5);
 }
 
 
 /* =========================================
-   STORY SECTION
+   FLOATING HEARTS
 ========================================= */
 
-.story-section {
+.hearts {
 
-    min-height: 100vh;
+    position: fixed;
 
-    padding: 100px 25px;
+    inset: 0;
 
-    display: flex;
+    pointer-events: none;
 
-    flex-direction: column;
+    overflow: hidden;
 
-    align-items: center;
-
-    justify-content: center;
-
-    text-align: center;
-
-    background:
-        linear-gradient(
-            180deg,
-            #050307,
-            #17030d
-        );
+    z-index: 2;
 }
 
-.story-section h2 {
 
-    font-size: clamp(40px, 7vw, 70px);
+.hearts span {
 
-    margin-bottom: 20px;
+    position: absolute;
+
+    bottom: -50px;
+
+    font-size: 20px;
+
+    opacity: 0;
+
+    animation: floatingHeart 8s linear infinite;
 }
 
-.story-section p {
 
-    font-family: Arial, sans-serif;
+.hearts span:nth-child(1) {
+    left: 10%;
+    animation-delay: 1s;
+}
 
-    font-size: 18px;
+.hearts span:nth-child(2) {
+    left: 25%;
+    animation-delay: 3s;
+}
 
-    color: rgba(255,255,255,0.75);
+.hearts span:nth-child(3) {
+    left: 40%;
+    animation-delay: 5s;
+}
 
-    margin: 8px;
+.hearts span:nth-child(4) {
+    left: 55%;
+    animation-delay: 2s;
+}
+
+.hearts span:nth-child(5) {
+    left: 70%;
+    animation-delay: 4s;
+}
+
+.hearts span:nth-child(6) {
+    left: 82%;
+    animation-delay: 6s;
+}
+
+.hearts span:nth-child(7) {
+    left: 90%;
+    animation-delay: 2.5s;
+}
+
+.hearts span:nth-child(8) {
+    left: 15%;
+    animation-delay: 7s;
+}
+
+
+@keyframes floatingHeart {
+
+    0% {
+        opacity: 0;
+        transform:
+            translateY(0)
+            scale(0.5)
+            rotate(0deg);
+    }
+
+    15% {
+        opacity: 0.8;
+    }
+
+    80% {
+        opacity: 0.5;
+    }
+
+    100% {
+        opacity: 0;
+        transform:
+            translateY(-110vh)
+            scale(1.2)
+            rotate(25deg);
+    }
 }
 
 
@@ -769,111 +691,66 @@ body {
 
 @media (max-width: 600px) {
 
-    .intro-text {
-
-        margin-top: 55px;
-
-        font-size: 10px;
-
-        letter-spacing: 2.5px;
+    .opening-screen {
+        padding: 28px 15px 40px;
     }
 
-    .character-stage {
+    .intro-text {
+        font-size: 10px;
+        letter-spacing: 2.5px;
+        margin-bottom: 15px;
+    }
 
-        height: 330px;
-
-        margin-top: 20px;
+    .animation-area {
+        height: 190px;
     }
 
     .character {
-
-        width: 145px;
+        width: 125px;
+        max-height: 155px;
     }
 
     .monkey {
-
-        left: -170px;
+        left: -150px;
     }
 
     .duck {
-
-        right: -170px;
-    }
-
-    @keyframes monkeyEnter {
-
-        0% {
-            opacity: 0;
-            left: -180px;
-            transform: translateX(-60px) rotate(-10deg);
-        }
-
-        15% {
-            opacity: 1;
-        }
-
-        100% {
-            opacity: 1;
-            left: calc(50% - 135px);
-            transform: rotate(0);
-        }
-    }
-
-    @keyframes duckEnter {
-
-        0% {
-            opacity: 0;
-            right: -180px;
-            transform: translateX(60px) rotate(10deg);
-        }
-
-        15% {
-            opacity: 1;
-        }
-
-        100% {
-            opacity: 1;
-            right: calc(50% - 135px);
-            transform: rotate(0);
-        }
+        right: -150px;
     }
 
     .hug-character {
-
-        width: 245px;
+        width: 170px;
+        height: 170px;
     }
 
     .tiku-photo-container {
-
-        width: 250px;
-
-        top: 40%;
+        width: 230px;
+        height: 230px;
+        border-radius: 24px;
     }
 
-    .birthday-message {
-
-        margin-top: 0;
+    .tiku-photo {
+        border-radius: 18px;
     }
 
-    .birthday-message h1 {
+    .birthday-content {
+        margin-top: 25px;
+    }
 
+    .birthday-content h1 {
         font-size: 42px;
     }
 
     .love-line {
-
         font-size: 18px;
     }
 
-    .small-message {
-
-        font-size: 12px;
+    .quote {
+        font-size: 13px;
     }
 
-    .story-button {
-
-        padding: 13px 24px;
-
+    #beginStory {
         font-size: 14px;
+        padding: 12px 24px;
     }
 }
