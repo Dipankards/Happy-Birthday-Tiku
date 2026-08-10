@@ -40,15 +40,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     setTimeout(() => {
 
-        if (monkey) {
-            monkey.style.opacity = "0";
-        }
+    if (monkey) {
+        monkey.style.display = "none";
+    }
 
-        if (duck) {
-            duck.style.opacity = "0";
-        }
+    if (duck) {
+        duck.style.display = "none";
+    }
 
-    }, 4800);
+}, 4500);
 
 
 
