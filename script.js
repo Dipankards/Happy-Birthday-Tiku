@@ -1,80 +1,331 @@
-/* =========================================
-   BIRTHDAY OPENING ANIMATION
-========================================= */
-
 document.addEventListener("DOMContentLoaded", () => {
 
     const monkey = document.getElementById("monkey");
     const duck = document.getElementById("duck");
     const hug = document.getElementById("hug");
-    const tikuPhoto = document.getElementById("tikuPhoto");
-    const birthdayContent = document.querySelector(".birthday-content");
+    const beginStory = document.getElementById("beginStory");
+
+
+    /* =================================================
+       OPENING ANIMATION
+    ================================================= */
 
 
     /*
-        Timeline
+        Timeline:
 
         0–2 sec
-        Intro text
+        Intro
 
-        2–4 sec
+        2–4.4 sec
         Monkey + Duck enter
 
-        4–6 sec
-        They hug
+        4.4 sec
+        Hug appears
 
         4.8 sec
         Monkey + Duck disappear
 
-        6 sec
+        5.8 sec
         Tiku photo appears
 
-        6.5 sec
+        6.6 sec
         Birthday text appears
     */
 
 
-    // Make sure the hug is initially hidden
-    hug.style.opacity = "0";
+    /* -------------------------------------------------
+       Make individual characters disappear
+    ------------------------------------------------- */
 
-
-    // At 4.5 seconds:
-    // hide the individual characters
     setTimeout(() => {
 
-        monkey.style.animation = "monkeyDisappear 0.5s ease forwards";
+        if (monkey) {
+            monkey.style.opacity = "0";
+        }
 
-        duck.style.animation = "duckDisappear 0.5s ease forwards";
+        if (duck) {
+            duck.style.opacity = "0";
+        }
+
+    }, 4800);
+
+
+
+    /* -------------------------------------------------
+       Small celebration effect when they hug
+    ------------------------------------------------- */
+
+    setTimeout(() => {
+
+        createHeartBurst();
 
     }, 4500);
 
 
-    // At 6 seconds:
-    // Tiku photo becomes visible
-    setTimeout(() => {
 
-        tikuPhoto.classList.add("show-photo");
+    /* =================================================
+       BEGIN OUR STORY
+    ================================================= */
 
-    }, 6000);
+    if (beginStory) {
+
+        beginStory.addEventListener("click", () => {
+
+            const story =
+                document.getElementById("story");
+
+            if (story) {
+
+                story.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+
+            }
+
+        });
+
+    }
 
 
-    // Begin Our Story button
-    const beginButton =
-        document.getElementById("beginStory");
+
+    /* =================================================
+       HEART BURST
+    ================================================= */
+
+    function createHeartBurst() {
+
+        const hearts = [
+            "❤️",
+            "💗",
+            "💕",
+            "💖",
+            "❤️",
+            "💘",
+            "💕",
+            "💗"
+        ];
 
 
-    beginButton.addEventListener("click", () => {
+        hearts.forEach((heartText, index) => {
 
-        /*
-            Later we will connect this button
-            to the next section of your website.
+            const heart =
+                document.createElement("div");
 
-            For now, it shows a small transition.
-        */
 
-        document.body.classList.add("story-started");
+            heart.innerHTML = heartText;
 
-        console.log("Our story begins ❤️");
+
+            heart.style.position = "fixed";
+
+            heart.style.left = "50%";
+
+            heart.style.top = "38%";
+
+            heart.style.zIndex = "999";
+
+            heart.style.pointerEvents = "none";
+
+            heart.style.fontSize =
+                `${18 + Math.random() * 15}px`;
+
+
+            const angle =
+                (Math.PI * 2 / hearts.length) *
+                index;
+
+
+            const distance =
+                100 + Math.random() * 120;
+
+
+            const x =
+                Math.cos(angle) * distance;
+
+
+            const y =
+                Math.sin(angle) * distance;
+
+
+            heart.animate(
+
+                [
+                    {
+                        opacity: 0,
+
+                        transform:
+                            "translate(-50%, -50%) scale(.3)"
+                    },
+
+                    {
+                        opacity: 1,
+
+                        transform:
+                            "translate(-50%, -50%) scale(1)"
+                    },
+
+                    {
+                        opacity: 0,
+
+                        transform:
+                            `translate(
+                                calc(-50% + ${x}px),
+                                calc(-50% + ${y}px)
+                            )
+                            scale(1.2)`
+                    }
+                ],
+
+                {
+                    duration:
+                        1200 + Math.random() * 500,
+
+                    easing:
+                        "cubic-bezier(.2,.8,.3,1)",
+
+                    fill: "forwards"
+                }
+
+            );
+
+
+            setTimeout(() => {
+
+                heart.remove();
+
+            }, 1800);
+
+        });
+
+    }
+
+
+
+    /* =================================================
+       REVEAL ANIMATIONS FOR SECTIONS
+    ================================================= */
+
+    const revealElements =
+        document.querySelectorAll(
+            ".story-card, " +
+            ".memory-message, " +
+            ".gallery-item, " +
+            ".video-card, " +
+            ".voice-card, " +
+            ".chat-story, " +
+            ".love-card, " +
+            ".promise, " +
+            ".love-letter"
+        );
+
+
+    const observer =
+        new IntersectionObserver(
+
+            (entries) => {
+
+                entries.forEach(entry => {
+
+                    if (entry.isIntersecting) {
+
+                        entry.target.classList.add(
+                            "visible"
+                        );
+
+                    }
+
+                });
+
+            },
+
+            {
+                threshold: 0.12
+            }
+
+        );
+
+
+    revealElements.forEach(element => {
+
+        observer.observe(element);
+
+    });
+
+
+    /* =================================================
+       CLICK HEART EFFECT
+    ================================================= */
+
+    document.addEventListener("click", (event) => {
+
+        if (
+            event.target.tagName === "BUTTON" ||
+            event.target.tagName === "A"
+        ) {
+            return;
+        }
+
+
+        const heart =
+            document.createElement("div");
+
+
+        heart.innerHTML = "❤️";
+
+
+        heart.style.position = "fixed";
+
+        heart.style.left =
+            `${event.clientX}px`;
+
+        heart.style.top =
+            `${event.clientY}px`;
+
+        heart.style.zIndex = "9999";
+
+        heart.style.pointerEvents = "none";
+
+        heart.style.fontSize = "16px";
+
+
+        heart.animate(
+
+            [
+                {
+                    opacity: 1,
+
+                    transform:
+                        "translate(-50%, -50%) scale(.7)"
+                },
+
+                {
+                    opacity: 0,
+
+                    transform:
+                        "translate(-50%, -130px) scale(1.3)"
+                }
+            ],
+
+            {
+                duration: 900,
+
+                easing: "ease-out",
+
+                fill: "forwards"
+            }
+
+        );
+
+
+        document.body.appendChild(heart);
+
+
+        setTimeout(() => {
+
+            heart.remove();
+
+        }, 1000);
 
     });
 
