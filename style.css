@@ -2220,3 +2220,41 @@ footer {
         font-size: 10px;
     }
 }
+
+/* =====================================================
+   SCROLL REVEAL
+===================================================== */
+
+.story-card,
+.memory-message,
+.gallery-item,
+.video-card,
+.voice-card,
+.chat-story,
+.love-card,
+.promise,
+.love-letter {
+    opacity: 0;
+
+    transform:
+        translateY(35px);
+
+    transition:
+        opacity .8s ease,
+        transform .8s ease;
+}
+
+.story-card.visible,
+.memory-message.visible,
+.gallery-item.visible,
+.video-card.visible,
+.voice-card.visible,
+.chat-story.visible,
+.love-card.visible,
+.promise.visible,
+.love-letter.visible {
+    opacity: 1;
+
+    transform:
+        translateY(0);
+}
