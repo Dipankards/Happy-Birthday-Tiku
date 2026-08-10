@@ -1,96 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
 
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
 
+    <meta name="theme-color"
+          content="#080308">
+
     <title>Happy Birthday Tiku ❤️</title>
 
+    <!-- Main CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 
+
 <body>
+
+    <!-- =========================================
+         FLOATING BACKGROUND HEARTS
+    ========================================== -->
+
+    <div class="hearts" aria-hidden="true">
+
+        <span>❤️</span>
+        <span>💗</span>
+        <span>💕</span>
+        <span>❤️</span>
+        <span>💖</span>
+        <span>💗</span>
+        <span>💕</span>
+        <span>❤️</span>
+
+    </div>
+
 
     <!-- =========================================
          OPENING SCREEN
     ========================================== -->
 
-    <main class="opening-screen" id="openingScreen">
+    <main class="opening-screen">
 
-        <!-- Background glow -->
-        <div class="background-glow"></div>
-
-        <!-- Stars -->
-        <div class="stars"></div>
 
         <!-- =====================================
              INTRO TEXT
         ====================================== -->
 
         <div class="intro-text">
-            A little something I made for you...
+
+            A LITTLE SOMETHING I MADE FOR YOU...
+
         </div>
 
 
         <!-- =====================================
-             CHARACTER AREA
+             MONKEY + DUCK ANIMATION
         ====================================== -->
 
-        <div class="character-stage">
+        <div class="animation-area">
 
-            <!-- Monkey -->
+
+            <!-- Monkey enters from LEFT -->
+
             <img
-                src="./assets/photos/monkey.png"
-                alt="Monkey"
+                src="assets/photos/monkey.png"
+                alt="Cute Monkey"
                 class="character monkey"
                 id="monkey"
             >
 
-            <!-- Duck -->
+
+            <!-- Duck enters from RIGHT -->
+
             <img
-                src="./assets/photos/duck.png"
-                alt="Duck"
+                src="assets/photos/duck.png"
+                alt="Cute Duck"
                 class="character duck"
                 id="duck"
             >
 
-            <!-- Hug image -->
+
+            <!--
+                This image appears when
+                Monkey and Duck hug.
+            -->
+
             <img
-                src="./assets/photos/hug.png"
+                src="assets/photos/hug.png"
                 alt="Monkey and Duck Hugging"
                 class="hug-character"
-                id="hugCharacter"
+                id="hug"
             >
 
-            <!-- Hearts -->
-            <div class="heart-burst" id="heartBurst">
-
-                <span class="heart h1">❤️</span>
-                <span class="heart h2">💗</span>
-                <span class="heart h3">💕</span>
-                <span class="heart h4">💖</span>
-                <span class="heart h5">❤️</span>
-                <span class="heart h6">💗</span>
-                <span class="heart h7">💕</span>
-                <span class="heart h8">💘</span>
-
-            </div>
-
         </div>
+
 
 
         <!-- =====================================
              TIKU PHOTO
         ====================================== -->
 
-        <div class="tiku-photo-container" id="tikuPhoto">
+        <div
+            class="tiku-photo-container"
+            id="tikuPhoto"
+        >
+
+            <!-- Glow behind photo -->
 
             <div class="photo-glow"></div>
 
+
+            <!-- Tiku's actual photo -->
+
             <img
-                src="./assets/photos/tikucover.jpg"
+                src="assets/photos/tikucover.jpg"
                 alt="Tiku"
                 class="tiku-photo"
             >
@@ -98,64 +123,76 @@
         </div>
 
 
+
         <!-- =====================================
              BIRTHDAY MESSAGE
         ====================================== -->
 
-        <section class="birthday-message" id="birthdayMessage">
+        <section class="birthday-content">
+
+
+            <!-- Main heading -->
 
             <h1>
+
                 Happy Birthday Tiku
-                <span>❤️</span>
+
+                <span class="title-heart">
+                    ❤️
+                </span>
+
             </h1>
 
+
+            <!-- Personal message -->
+
             <p class="love-line">
+
                 Mur priyo Patihah,<br>
-                from your Bandor. 🐒❤️🦆
+
+                from your Bandor.
+                🐒❤️🦆
+
             </p>
 
-            <p class="small-message">
-                Some people become a part of your life...
-                <br>
+
+            <!-- Quote -->
+
+            <p class="quote">
+
+                Some people become a part of your life...<br>
+
                 and some people become your life.
+
             </p>
 
+
+            <!-- Begin Story Button -->
 
             <button
-                class="story-button"
-                id="storyButton"
+                id="beginStory"
                 type="button"
             >
+
                 ✨ Begin Our Story ❤️
+
             </button>
 
+
         </section>
+
 
     </main>
 
 
+
     <!-- =========================================
-         STORY SECTION
-         We can replace this later with your
-         memories, photos, videos, chats etc.
+         JAVASCRIPT
     ========================================== -->
-
-    <section class="story-section" id="storySection">
-
-        <h2>Our Story ❤️</h2>
-
-        <p>
-            Every beautiful memory starts somewhere...
-        </p>
-
-        <p>
-            And ours is just beginning here. ✨
-        </p>
-
-    </section>
-
 
     <script src="script.js"></script>
 
+
 </body>
+
 </html>
