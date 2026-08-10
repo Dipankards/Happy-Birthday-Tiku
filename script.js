@@ -1,116 +1,80 @@
 /* =========================================
-   HAPPY BIRTHDAY TIKU
-   OPENING ANIMATION
+   BIRTHDAY OPENING ANIMATION
 ========================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
 
     const monkey = document.getElementById("monkey");
     const duck = document.getElementById("duck");
-    const hugCharacter = document.getElementById("hugCharacter");
-    const heartBurst = document.getElementById("heartBurst");
-    const storyButton = document.getElementById("storyButton");
-    const storySection = document.getElementById("storySection");
+    const hug = document.getElementById("hug");
+    const tikuPhoto = document.getElementById("tikuPhoto");
+    const birthdayContent = document.querySelector(".birthday-content");
 
 
-    /* =====================================
-       HIDE MONKEY + DUCK WHEN HUG APPEARS
-    ====================================== */
+    /*
+        Timeline
 
+        0–2 sec
+        Intro text
+
+        2–4 sec
+        Monkey + Duck enter
+
+        4–6 sec
+        They hug
+
+        4.8 sec
+        Monkey + Duck disappear
+
+        6 sec
+        Tiku photo appears
+
+        6.5 sec
+        Birthday text appears
+    */
+
+
+    // Make sure the hug is initially hidden
+    hug.style.opacity = "0";
+
+
+    // At 4.5 seconds:
+    // hide the individual characters
     setTimeout(() => {
 
-        monkey.classList.add("hugged");
-        duck.classList.add("hugged");
+        monkey.style.animation = "monkeyDisappear 0.5s ease forwards";
 
-    }, 4700);
+        duck.style.animation = "duckDisappear 0.5s ease forwards";
+
+    }, 4500);
 
 
-    /* =====================================
-       MAKE SURE HUG IS VISIBLE
-    ====================================== */
-
+    // At 6 seconds:
+    // Tiku photo becomes visible
     setTimeout(() => {
 
-        hugCharacter.classList.add("active");
+        tikuPhoto.classList.add("show-photo");
 
-    }, 4700);
-
-
-    /* =====================================
-       HEART BURST
-    ====================================== */
-
-    setTimeout(() => {
-
-        heartBurst.classList.add("active");
-
-    }, 4900);
+    }, 6000);
 
 
-    /* =====================================
-       BEGIN OUR STORY BUTTON
-    ====================================== */
-
-    storyButton.addEventListener("click", () => {
-
-        storySection.scrollIntoView({
-            behavior: "smooth"
-        });
-
-    });
+    // Begin Our Story button
+    const beginButton =
+        document.getElementById("beginStory");
 
 
-    /* =====================================
-       LITTLE HEARTS WHEN CLICKING
-    ====================================== */
+    beginButton.addEventListener("click", () => {
 
-    document.addEventListener("click", (event) => {
+        /*
+            Later we will connect this button
+            to the next section of your website.
 
-        // Don't create extra hearts when clicking
-        // the story button.
-        if (event.target === storyButton) {
-            return;
-        }
+            For now, it shows a small transition.
+        */
 
+        document.body.classList.add("story-started");
 
-        const heart = document.createElement("div");
-
-        heart.innerHTML = "❤️";
-
-        heart.style.position = "fixed";
-
-        heart.style.left = event.clientX + "px";
-
-        heart.style.top = event.clientY + "px";
-
-        heart.style.fontSize = "18px";
-
-        heart.style.pointerEvents = "none";
-
-        heart.style.zIndex = "9999";
-
-        heart.style.transition =
-            "all 1s ease";
-
-
-        document.body.appendChild(heart);
-
-
-        requestAnimationFrame(() => {
-
-            heart.style.transform =
-                "translateY(-70px) scale(1.4)";
-
-            heart.style.opacity = "0";
-
-        });
-
-
-        setTimeout(() => {
-
-            heart.remove();
-
-        }, 1000);
+        console.log("Our story begins ❤️");
 
     });
 
