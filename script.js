@@ -1,24 +1,33 @@
+/* =====================================================
+   BEGIN OUR STORY
+===================================================== */
+
 function beginStory() {
 
-    const story = document.getElementById("story");
+    const story =
+        document.getElementById("story");
 
     story.scrollIntoView({
-        behavior: "smooth"
+
+        behavior: "smooth",
+
+        block: "start"
+
     });
 
 }
 
 
-/* ========================== */
-/* SCROLL REVEAL ANIMATION */
-/* ========================== */
+/* =====================================================
+   SCROLL REVEAL
+===================================================== */
 
 const observer =
     new IntersectionObserver(
 
-        entries => {
+        function(entries) {
 
-            entries.forEach(entry => {
+            entries.forEach(function(entry) {
 
                 if (entry.isIntersecting) {
 
@@ -42,9 +51,13 @@ const observer =
 
 document
     .querySelectorAll(
-        ".timeline-item, .story-event, .memory-card, .love-card, .promise"
+        ".timeline-item, " +
+        ".story-event, " +
+        ".memory-card, " +
+        ".love-card, " +
+        ".promise"
     )
-    .forEach(element => {
+    .forEach(function(element) {
 
         element.style.opacity = "0";
 
@@ -59,9 +72,9 @@ document
     });
 
 
-/* ========================== */
-/* CLICK HEARTS */
-/* ========================== */
+/* =====================================================
+   CLICK HEART EFFECT
+===================================================== */
 
 document.addEventListener(
     "click",
@@ -72,7 +85,8 @@ document.addEventListener(
 
         heart.innerHTML = "❤️";
 
-        heart.style.position = "fixed";
+        heart.style.position =
+            "fixed";
 
         heart.style.left =
             event.clientX + "px";
@@ -80,29 +94,34 @@ document.addEventListener(
         heart.style.top =
             event.clientY + "px";
 
-        heart.style.pointerEvents = "none";
+        heart.style.pointerEvents =
+            "none";
 
-        heart.style.fontSize = "20px";
+        heart.style.fontSize =
+            "20px";
 
-        heart.style.zIndex = "9999";
+        heart.style.zIndex =
+            "9999";
 
         heart.style.transition =
             "all 1s ease";
 
+
         document.body.appendChild(heart);
 
 
-        setTimeout(() => {
+        setTimeout(function() {
 
             heart.style.transform =
                 "translateY(-80px) scale(1.5)";
 
-            heart.style.opacity = "0";
+            heart.style.opacity =
+                "0";
 
         }, 20);
 
 
-        setTimeout(() => {
+        setTimeout(function() {
 
             heart.remove();
 
