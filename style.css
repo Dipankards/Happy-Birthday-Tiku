@@ -1,3 +1,7 @@
+/* =========================================
+   BASIC RESET
+========================================= */
+
 * {
     margin: 0;
     padding: 0;
@@ -9,111 +13,100 @@ html {
 }
 
 body {
-    background: #080608;
+    background: #050307;
     color: white;
     font-family: Georgia, "Times New Roman", serif;
     overflow-x: hidden;
 }
 
 
-/* =====================================================
-   OPENING
-===================================================== */
+/* =========================================
+   OPENING SCREEN
+========================================= */
 
-.opening {
-
-    min-height: 100vh;
-
+.opening-screen {
     position: relative;
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100svh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
     overflow: hidden;
 
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    justify-content: center;
-
-    text-align: center;
-
     background:
         radial-gradient(
-            circle at center,
-            rgba(120, 20, 65, .35),
-            transparent 50%
-        ),
-        #080608;
+            circle at 50% 42%,
+            rgba(130, 10, 45, 0.45),
+            rgba(25, 3, 15, 0.35) 30%,
+            #050307 72%
+        );
+
+    isolation: isolate;
 }
 
 
-/* =====================================================
-   BACKGROUND
-===================================================== */
+/* =========================================
+   BACKGROUND GLOW
+========================================= */
 
 .background-glow {
-
     position: absolute;
 
-    width: 500px;
-    height: 500px;
+    width: 600px;
+    height: 600px;
 
-    border-radius: 50%;
+    top: 20%;
+    left: 50%;
+
+    transform: translateX(-50%);
 
     background:
         radial-gradient(
             circle,
-            rgba(255, 50, 120, .20),
-            transparent 70%
+            rgba(255, 40, 100, 0.18),
+            transparent 65%
         );
 
-    filter: blur(20px);
+    filter: blur(30px);
 
-    animation:
-        glowMove
-        8s
-        ease-in-out
-        infinite;
+    pointer-events: none;
+
+    z-index: -1;
 }
 
 
-@keyframes glowMove {
-
-    0%, 100% {
-        transform: scale(.9);
-    }
-
-    50% {
-        transform: scale(1.15);
-    }
-}
-
+/* =========================================
+   STARS
+========================================= */
 
 .stars {
-
     position: absolute;
-
     inset: 0;
 
+    pointer-events: none;
+
     background-image:
-        radial-gradient(
-            circle,
-            rgba(255,255,255,.7) 1px,
-            transparent 1px
-        );
+        radial-gradient(circle, rgba(255,255,255,0.8) 1px, transparent 1px),
+        radial-gradient(circle, rgba(255,150,190,0.7) 1px, transparent 1px),
+        radial-gradient(circle, rgba(255,255,255,0.5) 1px, transparent 1px);
 
-    background-size: 90px 90px;
+    background-size:
+        90px 90px,
+        130px 130px,
+        170px 170px;
 
-    opacity: .18;
+    background-position:
+        10px 20px,
+        50px 80px,
+        20px 100px;
 
-    animation:
-        starsMove
-        20s
-        linear
-        infinite;
+    opacity: 0.25;
+
+    animation: starsMove 15s linear infinite;
 }
-
 
 @keyframes starsMove {
 
@@ -122,135 +115,432 @@ body {
     }
 
     to {
-        transform: translateY(-90px);
+        transform: translateY(-80px);
     }
 }
 
 
-/* =====================================================
-   INTRO
-===================================================== */
+/* =========================================
+   INTRO TEXT
+========================================= */
 
-.intro-message {
+.intro-text {
 
-    position: relative;
+    margin-top: 70px;
 
-    z-index: 20;
-
-    font-size: 13px;
+    font-size: 14px;
 
     letter-spacing: 4px;
 
+    text-align: center;
+
     text-transform: uppercase;
 
-    color: #d4c3ca;
+    color: rgba(255,255,255,0.82);
+
+    opacity: 0;
 
     animation:
-        introAppear
-        2s
-        ease
-        forwards;
-}
+        introAppear 1.2s ease forwards;
 
+    animation-delay: 0.3s;
+}
 
 @keyframes introAppear {
 
-    0% {
+    from {
         opacity: 0;
         transform: translateY(15px);
     }
 
-    100% {
+    to {
         opacity: 1;
         transform: translateY(0);
     }
 }
 
 
-/* =====================================================
+/* =========================================
+   CHARACTER STAGE
+========================================= */
+
+.character-stage {
+
+    position: relative;
+
+    width: min(900px, 100%);
+    height: 380px;
+
+    margin-top: 35px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: visible;
+}
+
+
+/* =========================================
+   CHARACTERS
+========================================= */
+
+.character {
+
+    position: absolute;
+
+    width: 190px;
+
+    max-height: 280px;
+
+    object-fit: contain;
+
+    opacity: 0;
+
+    z-index: 5;
+
+    filter:
+        drop-shadow(0 15px 20px rgba(0,0,0,0.45));
+}
+
+
+/* =========================================
+   MONKEY ENTERS FROM LEFT
+========================================= */
+
+.monkey {
+
+    left: -250px;
+
+    transform: translateX(-100px) rotate(-8deg);
+
+    animation:
+        monkeyEnter 2.5s cubic-bezier(.22,.8,.25,1) forwards;
+
+    animation-delay: 1.8s;
+}
+
+@keyframes monkeyEnter {
+
+    0% {
+        opacity: 0;
+        left: -250px;
+        transform: translateX(-80px) rotate(-12deg);
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    70% {
+        transform: translateX(0) rotate(5deg);
+    }
+
+    100% {
+        opacity: 1;
+        left: calc(50% - 175px);
+        transform: translateX(0) rotate(0deg);
+    }
+}
+
+
+/* =========================================
+   DUCK ENTERS FROM RIGHT
+========================================= */
+
+.duck {
+
+    right: -250px;
+
+    transform: translateX(100px) rotate(8deg);
+
+    animation:
+        duckEnter 2.5s cubic-bezier(.22,.8,.25,1) forwards;
+
+    animation-delay: 1.8s;
+}
+
+@keyframes duckEnter {
+
+    0% {
+        opacity: 0;
+        right: -250px;
+        transform: translateX(80px) rotate(12deg);
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    70% {
+        transform: translateX(0) rotate(-5deg);
+    }
+
+    100% {
+        opacity: 1;
+        right: calc(50% - 175px);
+        transform: translateX(0) rotate(0deg);
+    }
+}
+
+
+/* =========================================
+   HUG CHARACTER
+========================================= */
+
+.hug-character {
+
+    position: absolute;
+
+    width: 300px;
+    max-width: 55vw;
+
+    object-fit: contain;
+
+    opacity: 0;
+
+    z-index: 10;
+
+    transform: scale(0.3);
+
+    filter:
+        drop-shadow(0 20px 30px rgba(255,20,100,0.35));
+
+    animation:
+        hugAppear 1.2s ease forwards;
+
+    animation-delay: 4.7s;
+}
+
+@keyframes hugAppear {
+
+    0% {
+        opacity: 0;
+        transform: scale(0.3) rotate(-5deg);
+    }
+
+    55% {
+        opacity: 1;
+        transform: scale(1.12) rotate(2deg);
+    }
+
+    75% {
+        transform: scale(0.96) rotate(-1deg);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1) rotate(0);
+    }
+}
+
+
+/* =========================================
+   HIDE CHARACTERS AFTER HUG
+========================================= */
+
+.monkey,
+.duck {
+
+    animation-fill-mode: forwards;
+}
+
+
+/* =========================================
+   HEART BURST
+========================================= */
+
+.heart-burst {
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 1px;
+    height: 1px;
+
+    z-index: 20;
+
+    pointer-events: none;
+}
+
+.heart {
+
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    font-size: 26px;
+
+    opacity: 0;
+
+    animation:
+        heartExplosion 1.7s ease-out forwards;
+
+    animation-delay: 4.9s;
+}
+
+
+/* Different directions */
+
+.h1 {
+    --x: -190px;
+    --y: -130px;
+}
+
+.h2 {
+    --x: 190px;
+    --y: -120px;
+}
+
+.h3 {
+    --x: -220px;
+    --y: 10px;
+}
+
+.h4 {
+    --x: 220px;
+    --y: 30px;
+}
+
+.h5 {
+    --x: -130px;
+    --y: 150px;
+}
+
+.h6 {
+    --x: 130px;
+    --y: 160px;
+}
+
+.h7 {
+    --x: -80px;
+    --y: -190px;
+}
+
+.h8 {
+    --x: 80px;
+    --y: -200px;
+}
+
+@keyframes heartExplosion {
+
+    0% {
+        opacity: 0;
+        transform:
+            translate(-50%, -50%)
+            scale(0.2);
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        transform:
+            translate(
+                calc(-50% + var(--x)),
+                calc(-50% + var(--y))
+            )
+            scale(1.2);
+    }
+}
+
+
+/* =========================================
    TIKU PHOTO
-===================================================== */
+========================================= */
 
 .tiku-photo-container {
 
     position: absolute;
 
-    z-index: 1;
+    top: 42%;
 
-    width: 230px;
-    height: 230px;
-
-    top: 25%;
     left: 50%;
+
+    width: min(430px, 70vw);
+
+    aspect-ratio: 3 / 4;
 
     transform:
         translate(-50%, -50%)
-        scale(.7);
+        scale(0.85);
 
     opacity: 0;
 
+    z-index: 2;
+
     animation:
-        photoAppear
-        2s
-        ease
-        6s
-        forwards;
+        photoAppear 1.8s ease forwards;
+
+    animation-delay: 5.5s;
+
+    pointer-events: none;
 }
-
-
-.photo-glow {
-
-    position: absolute;
-
-    inset: -35px;
-
-    border-radius: 50%;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(255,100,170,.55),
-            transparent 65%
-        );
-
-    filter: blur(15px);
-}
-
 
 .tiku-photo {
+
+    position: relative;
 
     width: 100%;
     height: 100%;
 
     object-fit: cover;
 
-    border-radius: 50%;
+    border-radius: 25px;
 
-    border:
-        3px solid
-        rgba(255,255,255,.7);
+    display: block;
 
     box-shadow:
-        0 0 45px
-        rgba(255,100,170,.4);
+        0 0 50px rgba(255,50,120,0.35);
+
+    opacity: 0.42;
+
+    filter:
+        brightness(0.8)
+        saturate(1.15);
 }
 
+
+/* =========================================
+   PHOTO GLOW
+========================================= */
+
+.photo-glow {
+
+    position: absolute;
+
+    inset: -30px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,40,120,0.35),
+            transparent 65%
+        );
+
+    filter: blur(30px);
+
+    z-index: -1;
+}
 
 @keyframes photoAppear {
 
     0% {
-
         opacity: 0;
-
         transform:
             translate(-50%, -50%)
-            scale(.65);
+            scale(0.85);
     }
 
     100% {
-
-        opacity: .92;
-
+        opacity: 1;
         transform:
             translate(-50%, -50%)
             scale(1);
@@ -258,2055 +548,332 @@ body {
 }
 
 
-/* =====================================================
-   COUPLE CONTAINER
-===================================================== */
-
-.couple-animation {
-
-    position: absolute;
-
-    z-index: 12;
-
-    width: 100%;
-    height: 230px;
-
-    left: 0;
-    top: 50%;
-
-    transform:
-        translateY(-50%);
-
-    pointer-events: none;
-}
-
-
-/* =====================================================
-   MONKEY
-===================================================== */
-
-.cartoon.monkey {
-
-    position: absolute;
-
-    width: 120px;
-    height: 180px;
-
-    left: 50%;
-
-    transform:
-        translateX(-390px);
-
-    animation:
-        monkeyWalkIn
-        4s
-        cubic-bezier(.2,.8,.2,1)
-        forwards,
-        hugMonkey
-        .8s
-        ease
-        4.2s
-        infinite;
-}
-
-
-/* MONKEY HEAD */
-
-.monkey-head {
-
-    position: absolute;
-
-    width: 92px;
-    height: 82px;
-
-    left: 14px;
-    top: 5px;
-
-    border-radius: 48%;
-
-    background:
-        linear-gradient(
-            145deg,
-            #a96f43,
-            #714329
-        );
-
-    box-shadow:
-        inset -8px -8px 0
-        rgba(50,20,10,.12);
-
-    z-index: 5;
-}
-
-
-/* MONKEY EARS */
-
-.monkey-ear {
-
-    position: absolute;
-
-    width: 36px;
-    height: 36px;
-
-    top: 22px;
-
-    border-radius: 50%;
-
-    background: #86512f;
-
-    z-index: -1;
-}
-
-
-.monkey-ear.left {
-    left: -17px;
-}
-
-
-.monkey-ear.right {
-    right: -17px;
-}
-
-
-.monkey-ear::after {
-
-    content: "";
-
-    position: absolute;
-
-    width: 20px;
-    height: 20px;
-
-    left: 8px;
-    top: 8px;
-
-    border-radius: 50%;
-
-    background: #d99b83;
-}
-
-
-/* MONKEY FACE */
-
-.monkey-face {
-
-    position: absolute;
-
-    width: 66px;
-    height: 55px;
-
-    left: 13px;
-    top: 22px;
-
-    border-radius: 45%;
-
-    background: #c68b61;
-}
-
-
-/* MONKEY EYES */
-
-.monkey-eye {
-
-    position: absolute;
-
-    width: 8px;
-    height: 10px;
-
-    top: 13px;
-
-    border-radius: 50%;
-
-    background: #19100c;
-}
-
-
-.left-eye {
-    left: 17px;
-}
-
-
-.right-eye {
-    right: 17px;
-}
-
-
-/* MONKEY MUZZLE */
-
-.monkey-muzzle {
-
-    position: absolute;
-
-    width: 45px;
-    height: 27px;
-
-    left: 10px;
-    bottom: 3px;
-
-    border-radius: 50%;
-
-    background: #e0aa82;
-}
-
-
-.monkey-nose {
-
-    position: absolute;
-
-    width: 8px;
-    height: 6px;
-
-    left: 19px;
-    top: 6px;
-
-    border-radius: 50%;
-
-    background: #4a2418;
-}
-
-
-.monkey-mouth {
-
-    position: absolute;
-
-    width: 17px;
-    height: 8px;
-
-    left: 14px;
-    top: 14px;
-
-    border-bottom:
-        2px solid #542317;
-
-    border-radius: 50%;
-}
-
-
-/* MONKEY BODY */
-
-.monkey-body {
-
-    position: absolute;
-
-    width: 70px;
-    height: 80px;
-
-    left: 25px;
-    top: 78px;
-
-    border-radius:
-        45% 45% 35% 35%;
-
-    background:
-        linear-gradient(
-            145deg,
-            #a96f43,
-            #714329
-        );
-}
-
-
-.monkey-belly {
-
-    position: absolute;
-
-    width: 42px;
-    height: 48px;
-
-    left: 14px;
-    top: 15px;
-
-    border-radius: 50%;
-
-    background: #d59b6e;
-}
-
-
-/* MONKEY ARMS */
-
-.monkey-arm {
-
-    position: absolute;
-
-    width: 17px;
-    height: 63px;
-
-    top: 5px;
-
-    border-radius: 20px;
-
-    background: #8c572f;
-
-    transform-origin:
-        top center;
-}
-
-
-.monkey-arm-left {
-
-    left: -10px;
-
-    transform:
-        rotate(18deg);
-
-    animation:
-        monkeyLeftArm
-        1.2s
-        ease
-        4s
-        forwards;
-}
-
-
-.monkey-arm-right {
-
-    right: -10px;
-
-    transform:
-        rotate(-18deg);
-
-    animation:
-        monkeyRightArm
-        1.2s
-        ease
-        4s
-        forwards;
-}
-
-
-/* MONKEY LEGS */
-
-.monkey-leg {
-
-    position: absolute;
-
-    width: 19px;
-    height: 45px;
-
-    bottom: -25px;
-
-    border-radius: 20px;
-
-    background: #704128;
-}
-
-
-.monkey-leg-left {
-    left: 10px;
-}
-
-
-.monkey-leg-right {
-    right: 10px;
-}
-
-
-/* MONKEY TAIL */
-
-.monkey-tail {
-
-    position: absolute;
-
-    width: 75px;
-    height: 90px;
-
-    left: 68px;
-    top: 82px;
-
-    border:
-        9px solid #87502e;
-
-    border-left-color: transparent;
-    border-bottom-color: transparent;
-
-    border-radius: 50%;
-
-    transform:
-        rotate(30deg);
-
-    z-index: -2;
-}
-
-
-/* =====================================================
-   DUCK
-===================================================== */
-
-.cartoon.duck {
-
-    position: absolute;
-
-    width: 125px;
-    height: 175px;
-
-    left: 50%;
-
-    transform:
-        translateX(390px);
-
-    animation:
-        duckWalkIn
-        4s
-        cubic-bezier(.2,.8,.2,1)
-        forwards,
-        hugDuck
-        .8s
-        ease
-        4.2s
-        infinite;
-}
-
-
-/* DUCK BODY */
-
-.duck-body {
-
-    position: absolute;
-
-    width: 78px;
-    height: 85px;
-
-    left: 25px;
-    top: 70px;
-
-    border-radius:
-        50% 50% 42% 42%;
-
-    background:
-        linear-gradient(
-            145deg,
-            #fff7c9,
-            #e9d878
-        );
-
-    box-shadow:
-        0 8px 15px
-        rgba(0,0,0,.2);
-}
-
-
-/* DUCK HEAD */
-
-.duck-head {
-
-    position: absolute;
-
-    width: 82px;
-    height: 78px;
-
-    left: 20px;
-    top: 5px;
-
-    border-radius: 50%;
-
-    background:
-        linear-gradient(
-            145deg,
-            #fffbe2,
-            #eee09b
-        );
-
-    z-index: 5;
-}
-
-
-/* DUCK EYE */
-
-.duck-eye {
-
-    position: absolute;
-
-    width: 9px;
-    height: 11px;
-
-    right: 18px;
-    top: 23px;
-
-    border-radius: 50%;
-
-    background: #17130b;
-}
-
-
-.duck-eye::after {
-
-    content: "";
-
-    position: absolute;
-
-    width: 3px;
-    height: 3px;
-
-    top: 2px;
-    left: 2px;
-
-    border-radius: 50%;
-
-    background: white;
-}
-
-
-/* DUCK BEAK */
-
-.duck-beak {
-
-    position: absolute;
-
-    width: 38px;
-    height: 23px;
-
-    right: -22px;
-    top: 38px;
-
-    border-radius:
-        50% 60% 60% 50%;
-
-    background:
-        linear-gradient(
-            #ffbd4d,
-            #e88a24
-        );
-
-    transform:
-        rotate(-3deg);
-}
-
-
-.duck-beak::after {
-
-    content: "";
-
-    position: absolute;
-
-    width: 25px;
-    height: 1px;
-
-    left: 5px;
-    top: 11px;
-
-    background:
-        rgba(120,60,0,.4);
-}
-
-
-/* DUCK CHEEK */
-
-.duck-cheek {
-
-    position: absolute;
-
-    width: 16px;
-    height: 10px;
-
-    right: 10px;
-    bottom: 16px;
-
-    border-radius: 50%;
-
-    background:
-        rgba(255,130,130,.3);
-}
-
-
-/* DUCK WINGS */
-
-.duck-wing {
-
-    position: absolute;
-
-    width: 32px;
-    height: 62px;
-
-    top: 10px;
-
-    border-radius: 50%;
-
-    background:
-        linear-gradient(
-            145deg,
-            #fff9d7,
-            #d8ca70
-        );
-
-    transform-origin:
-        top center;
-}
-
-
-.duck-wing-left {
-
-    left: -17px;
-
-    transform:
-        rotate(15deg);
-
-    animation:
-        duckLeftWing
-        1.2s
-        ease
-        4s
-        forwards;
-}
-
-
-.duck-wing-right {
-
-    right: -17px;
-
-    transform:
-        rotate(-15deg);
-
-    animation:
-        duckRightWing
-        1.2s
-        ease
-        4s
-        forwards;
-}
-
-
-/* DUCK LEGS */
-
-.duck-leg {
-
-    position: absolute;
-
-    width: 13px;
-    height: 35px;
-
-    bottom: -27px;
-
-    background: #e99a2c;
-
-    border-radius: 10px;
-}
-
-
-.duck-leg-left {
-    left: 18px;
-}
-
-
-.duck-leg-right {
-    right: 18px;
-}
-
-
-/* =====================================================
-   WALK IN
-===================================================== */
-
-@keyframes monkeyWalkIn {
-
-    0% {
-
-        transform:
-            translateX(-390px)
-            translateY(15px);
-    }
-
-    20% {
-
-        transform:
-            translateX(-300px)
-            translateY(-8px);
-    }
-
-    40% {
-
-        transform:
-            translateX(-190px)
-            translateY(10px);
-    }
-
-    65% {
-
-        transform:
-            translateX(-75px)
-            translateY(-5px);
-    }
-
-    100% {
-
-        transform:
-            translateX(-55px)
-            translateY(0);
-    }
-}
-
-
-@keyframes duckWalkIn {
-
-    0% {
-
-        transform:
-            translateX(390px)
-            translateY(15px);
-    }
-
-    20% {
-
-        transform:
-            translateX(300px)
-            translateY(-8px);
-    }
-
-    40% {
-
-        transform:
-            translateX(190px)
-            translateY(10px);
-    }
-
-    65% {
-
-        transform:
-            translateX(75px)
-            translateY(-5px);
-    }
-
-    100% {
-
-        transform:
-            translateX(55px)
-            translateY(0);
-    }
-}
-
-
-/* =====================================================
-   HUG
-===================================================== */
-
-@keyframes monkeyLeftArm {
-
-    from {
-        transform:
-            rotate(18deg);
-    }
-
-    to {
-        transform:
-            rotate(65deg);
-    }
-}
-
-
-@keyframes monkeyRightArm {
-
-    from {
-        transform:
-            rotate(-18deg);
-    }
-
-    to {
-        transform:
-            rotate(-65deg);
-    }
-}
-
-
-@keyframes duckLeftWing {
-
-    from {
-        transform:
-            rotate(15deg);
-    }
-
-    to {
-        transform:
-            rotate(55deg);
-    }
-}
-
-
-@keyframes duckRightWing {
-
-    from {
-        transform:
-            rotate(-15deg);
-    }
-
-    to {
-        transform:
-            rotate(-55deg);
-    }
-}
-
-
-@keyframes hugMonkey {
-
-    0%, 100% {
-        margin-top: 0;
-    }
-
-    50% {
-        margin-top: -6px;
-    }
-}
-
-
-@keyframes hugDuck {
-
-    0%, 100% {
-        margin-top: 0;
-    }
-
-    50% {
-        margin-top: -6px;
-    }
-}
-
-
-/* =====================================================
-   HUG HEART
-===================================================== */
-
-.hug-heart {
-
-    position: absolute;
-
-    z-index: 15;
-
-    top: 50%;
-    left: 50%;
-
-    transform:
-        translate(-50%,-50%)
-        scale(0);
-
-    font-size: 38px;
-
-    opacity: 0;
-
-    animation:
-        hugHeart
-        1.5s
-        ease
-        4s
-        forwards;
-}
-
-
-@keyframes hugHeart {
-
-    0% {
-
-        opacity: 0;
-
-        transform:
-            translate(-50%,-50%)
-            scale(0);
-    }
-
-    35% {
-
-        opacity: 1;
-
-        transform:
-            translate(-50%,-50%)
-            scale(1.3);
-    }
-
-    70% {
-
-        transform:
-            translate(-50%,-50%)
-            scale(.9);
-    }
-
-    100% {
-
-        opacity: 0;
-
-        transform:
-            translate(-50%,-50%)
-            scale(1.4);
-    }
-}
-
-
-/* =====================================================
-   HEART BURST
-===================================================== */
-
-.heart-burst {
-
-    position: absolute;
-
-    z-index: 30;
-
-    left: 50%;
-    top: 50%;
-}
-
-
-.heart-burst span {
-
-    position: absolute;
-
-    left: 0;
-    top: 0;
-
-    opacity: 0;
-
-    font-size: 22px;
-}
-
-
-.heart-burst span:nth-child(1) {
-    animation:
-        burst1 2s ease 5s forwards;
-}
-
-.heart-burst span:nth-child(2) {
-    animation:
-        burst2 2s ease 5s forwards;
-}
-
-.heart-burst span:nth-child(3) {
-    animation:
-        burst3 2s ease 5s forwards;
-}
-
-.heart-burst span:nth-child(4) {
-    animation:
-        burst4 2s ease 5s forwards;
-}
-
-.heart-burst span:nth-child(5) {
-    animation:
-        burst5 2s ease 5s forwards;
-}
-
-.heart-burst span:nth-child(6) {
-    animation:
-        burst6 2s ease 5s forwards;
-}
-
-.heart-burst span:nth-child(7) {
-    animation:
-        burst7 2s ease 5s forwards;
-}
-
-.heart-burst span:nth-child(8) {
-    animation:
-        burst8 2s ease 5s forwards;
-}
-
-.heart-burst span:nth-child(9) {
-    animation:
-        burst9 2s ease 5s forwards;
-}
-
-.heart-burst span:nth-child(10) {
-    animation:
-        burst10 2s ease 5s forwards;
-}
-
-.heart-burst span:nth-child(11) {
-    animation:
-        burst11 2s ease 5s forwards;
-}
-
-.heart-burst span:nth-child(12) {
-    animation:
-        burst12 2s ease 5s forwards;
-}
-
-
-@keyframes burst1 {
-
-    to {
-        opacity: 1;
-        transform:
-            translate(-180px,-130px)
-            scale(1.3);
-    }
-}
-
-
-@keyframes burst2 {
-
-    to {
-        opacity: 1;
-        transform:
-            translate(180px,-130px)
-            scale(1.3);
-    }
-}
-
-
-@keyframes burst3 {
-
-    to {
-        opacity: 1;
-        transform:
-            translate(-240px,-30px);
-    }
-}
-
-
-@keyframes burst4 {
-
-    to {
-        opacity: 1;
-        transform:
-            translate(240px,-30px);
-    }
-}
-
-
-@keyframes burst5 {
-
-    to {
-        opacity: 1;
-        transform:
-            translate(-170px,100px);
-    }
-}
-
-
-@keyframes burst6 {
-
-    to {
-        opacity: 1;
-        transform:
-            translate(170px,100px);
-    }
-}
-
-
-@keyframes burst7 {
-
-    to {
-        opacity: 1;
-        transform:
-            translate(-100px,-180px);
-    }
-}
-
-
-@keyframes burst8 {
-
-    to {
-        opacity: 1;
-        transform:
-            translate(100px,-180px);
-    }
-}
-
-
-@keyframes burst9 {
-
-    to {
-        opacity: 1;
-        transform:
-            translate(-280px,80px);
-    }
-}
-
-
-@keyframes burst10 {
-
-    to {
-        opacity: 1;
-        transform:
-            translate(280px,80px);
-    }
-}
-
-
-@keyframes burst11 {
-
-    to {
-        opacity: 1;
-        transform:
-            translate(-80px,170px);
-    }
-}
-
-
-@keyframes burst12 {
-
-    to {
-        opacity: 1;
-        transform:
-            translate(80px,170px);
-    }
-}
-
-
-/* =====================================================
-   BIRTHDAY CONTENT
-===================================================== */
-
-.birthday-content {
+/* =========================================
+   BIRTHDAY MESSAGE
+========================================= */
+
+.birthday-message {
 
     position: relative;
 
-    z-index: 20;
+    z-index: 30;
 
-    margin-top: 20px;
+    margin-top: -10px;
+
+    width: min(900px, 92%);
+
+    text-align: center;
 
     opacity: 0;
 
+    transform: translateY(30px);
+
     animation:
-        birthdayAppear
-        2s
-        ease
-        7.2s
-        forwards;
+        messageAppear 1.5s ease forwards;
+
+    animation-delay: 6.8s;
+}
+
+@keyframes messageAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 
-.birthday-small {
+/* =========================================
+   TITLE
+========================================= */
 
-    font-size: 11px;
+.birthday-message h1 {
 
-    letter-spacing: 5px;
+    font-size: clamp(42px, 7vw, 82px);
 
-    color: #b88ba0;
+    line-height: 1.1;
+
+    font-weight: 500;
+
+    color: #fff;
+
+    text-shadow:
+        0 0 10px rgba(255,255,255,0.5),
+        0 0 35px rgba(255,40,100,0.65);
 
     margin-bottom: 15px;
 }
 
+.birthday-message h1 span {
 
-.birthday-content h1 {
+    display: inline-block;
 
-    font-size:
-        clamp(42px,8vw,85px);
+    animation:
+        heartBeat 1.3s infinite;
 
-    font-weight: normal;
+}
 
-    line-height: 1.1;
+@keyframes heartBeat {
 
-    background:
-        linear-gradient(
-            90deg,
-            #fff,
-            #ffc1d7,
-            #fff
-        );
+    0%,
+    100% {
+        transform: scale(1);
+    }
 
-    -webkit-background-clip: text;
-
-    -webkit-text-fill-color: transparent;
+    50% {
+        transform: scale(1.2);
+    }
 }
 
 
-.personal-message {
+/* =========================================
+   LOVE LINE
+========================================= */
 
-    margin-top: 20px;
+.love-line {
 
-    font-size:
-        clamp(17px,3vw,22px);
+    font-size: clamp(18px, 3vw, 25px);
 
-    color: #e7c8d5;
+    line-height: 1.6;
+
+    color: #ffe4ed;
+
+    text-shadow:
+        0 0 15px rgba(255,50,120,0.4);
 }
 
 
-.quote {
+/* =========================================
+   SMALL MESSAGE
+========================================= */
 
-    margin-top: 18px;
+.small-message {
 
-    color: #a99aa1;
+    margin-top: 15px;
+
+    font-family:
+        Arial,
+        sans-serif;
 
     font-size: 14px;
 
-    line-height: 1.8;
+    line-height: 1.7;
+
+    color: rgba(255,255,255,0.72);
 }
 
 
-@keyframes birthdayAppear {
+/* =========================================
+   BEGIN STORY BUTTON
+========================================= */
 
-    from {
+.story-button {
 
-        opacity: 0;
+    margin-top: 28px;
 
-        transform:
-            translateY(30px);
-    }
-
-    to {
-
-        opacity: 1;
-
-        transform:
-            translateY(0);
-    }
-}
-
-
-/* =====================================================
-   BUTTON
-===================================================== */
-
-.begin-button {
-
-    margin-top: 30px;
-
-    padding:
-        15px 32px;
+    padding: 15px 30px;
 
     border-radius: 50px;
 
-    border:
-        1px solid
-        rgba(255,255,255,.35);
+    border: 1px solid rgba(255,255,255,0.55);
 
     background:
-        rgba(255,255,255,.08);
+        rgba(255,255,255,0.08);
 
     color: white;
-
-    font-family: inherit;
 
     font-size: 16px;
 
     cursor: pointer;
 
-    backdrop-filter:
-        blur(10px);
+    backdrop-filter: blur(10px);
 
     transition:
-        .4s;
+        transform 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease;
 }
 
+.story-button:hover {
 
-.begin-button:hover {
-
-    transform:
-        scale(1.08);
+    transform: translateY(-4px) scale(1.03);
 
     background:
-        rgba(255,100,160,.18);
+        rgba(255,70,130,0.25);
 
     box-shadow:
-        0 0 30px
-        rgba(255,100,160,.25);
+        0 10px 35px rgba(255,30,100,0.3);
+}
+
+.story-button:active {
+
+    transform: scale(0.97);
 }
 
 
-.music-symbol {
+/* =========================================
+   STORY SECTION
+========================================= */
 
-    position: absolute;
-
-    right: 25px;
-    bottom: 25px;
-
-    opacity: .5;
-
-    z-index: 30;
-
-    font-size: 20px;
-}
-
-
-/* =====================================================
-   STORY SECTIONS
-===================================================== */
-
-.chapter {
+.story-section {
 
     min-height: 100vh;
 
-    padding:
-        120px 8%;
+    padding: 100px 25px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
 
     text-align: center;
 
-    position: relative;
+    background:
+        linear-gradient(
+            180deg,
+            #050307,
+            #17030d
+        );
 }
 
+.story-section h2 {
 
-.chapter:nth-child(even) {
+    font-size: clamp(40px, 7vw, 70px);
 
-    background: #0d090c;
+    margin-bottom: 20px;
 }
 
+.story-section p {
 
-.chapter-number {
-
-    font-size: 11px;
-
-    letter-spacing: 5px;
-
-    color: #b98298;
-
-    margin-bottom: 25px;
-}
-
-
-.chapter h2 {
-
-    font-size:
-        clamp(38px,6vw,65px);
-
-    font-weight: normal;
-
-    margin-bottom: 25px;
-}
-
-
-.chapter-intro {
-
-    max-width: 650px;
-
-    margin:
-        0 auto 70px;
-
-    color: #a99ba1;
+    font-family: Arial, sans-serif;
 
     font-size: 18px;
 
-    line-height: 1.8;
+    color: rgba(255,255,255,0.75);
+
+    margin: 8px;
 }
 
 
-/* =====================================================
-   TIMELINE
-===================================================== */
-
-.timeline {
-
-    max-width: 1000px;
-
-    margin: auto;
-}
-
-
-.timeline-item {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 60px;
-
-    margin-bottom: 100px;
-
-    text-align: left;
-}
-
-
-.timeline-item.reverse {
-
-    flex-direction:
-        row-reverse;
-}
-
-
-.timeline-photo {
-
-    flex: 1;
-}
-
-
-.photo-placeholder {
-
-    aspect-ratio: 4/5;
-
-    border-radius: 20px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #25131c,
-            #120b10
-        );
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    font-size: 60px;
-}
-
-
-.timeline-text {
-
-    flex: 1;
-}
-
-
-.timeline-text span {
-
-    color: #b98298;
-
-    letter-spacing: 3px;
-
-    font-size: 11px;
-}
-
-
-.timeline-text h3 {
-
-    font-size: 32px;
-
-    font-weight: normal;
-
-    margin:
-        15px 0;
-}
-
-
-.timeline-text p {
-
-    color: #a99ba1;
-
-    line-height: 1.8;
-}
-
-
-/* =====================================================
-   STORY LINE
-===================================================== */
-
-.story-line {
-
-    max-width: 750px;
-
-    margin: auto;
-
-    text-align: left;
-
-    border-left:
-        1px solid #442536;
-
-    padding-left: 40px;
-}
-
-
-.story-event {
-
-    display: flex;
-
-    gap: 25px;
-
-    margin-bottom: 80px;
-
-    position: relative;
-}
-
-
-.event-dot {
-
-    position: absolute;
-
-    left: -63px;
-
-    width: 45px;
-    height: 45px;
-
-    border-radius: 50%;
-
-    background: #1a0e15;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-}
-
-
-.story-event small {
-
-    color: #b98298;
-
-    letter-spacing: 2px;
-}
-
-
-.story-event h3 {
-
-    font-size: 30px;
-
-    font-weight: normal;
-
-    margin: 10px 0;
-}
-
-
-.story-event p {
-
-    color: #a99ba1;
-}
-
-
-/* =====================================================
-   GALLERY
-===================================================== */
-
-.gallery {
-
-    max-width: 1000px;
-
-    margin: auto;
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(2,1fr);
-
-    gap: 25px;
-}
-
-
-.memory-card {
-
-    background: #130d11;
-
-    border-radius: 18px;
-
-    overflow: hidden;
-}
-
-
-.gallery-placeholder {
-
-    aspect-ratio: 4/3;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    font-size: 60px;
-
-    background: #21131b;
-}
-
-
-.memory-card p {
-
-    padding: 18px;
-
-    color: #b9aab1;
-}
-
-
-/* =====================================================
-   CHAT
-===================================================== */
-
-.chat-box {
-
-    max-width: 500px;
-
-    margin: auto;
-
-    padding: 30px;
-}
-
-
-.message {
-
-    padding:
-        14px 18px;
-
-    border-radius: 18px;
-
-    margin-bottom: 15px;
-
-    width: fit-content;
-
-    max-width: 80%;
-}
-
-
-.mine {
-
-    margin-left: auto;
-
-    background: #71334f;
-}
-
-
-.theirs {
-
-    background: #21161d;
-
-    color: #ddd;
-}
-
-
-/* =====================================================
-   AUDIO
-===================================================== */
-
-.audio-card {
-
-    max-width: 600px;
-
-    margin: auto;
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 20px;
-
-    padding: 25px;
-
-    border:
-        1px solid #38232e;
-
-    border-radius: 20px;
-
-    background: #120c10;
-
-    text-align: left;
-}
-
-
-.audio-icon {
-
-    font-size: 40px;
-}
-
-
-.audio-card h3 {
-
-    font-weight: normal;
-}
-
-
-.audio-card p {
-
-    color: #8f8289;
-
-    margin-top: 5px;
-}
-
-
-.audio-card button {
-
-    margin-left: auto;
-
-    width: 50px;
-    height: 50px;
-
-    border-radius: 50%;
-
-    border: none;
-
-    background: #71334f;
-
-    color: white;
-}
-
-
-/* =====================================================
-   VIDEO
-===================================================== */
-
-.video-placeholder {
-
-    max-width: 900px;
-
-    aspect-ratio: 16/9;
-
-    margin: auto;
-
-    border-radius: 20px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #21131c,
-            #0e090c
-        );
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    justify-content: center;
-}
-
-
-.video-placeholder span {
-
-    width: 75px;
-    height: 75px;
-
-    border-radius: 50%;
-
-    background:
-        rgba(255,255,255,.1);
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    font-size: 30px;
-}
-
-
-/* =====================================================
-   LOVE
-===================================================== */
-
-.love-grid {
-
-    max-width: 900px;
-
-    margin: auto;
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(2,1fr);
-
-    gap: 25px;
-}
-
-
-.love-card {
-
-    text-align: left;
-
-    padding: 35px;
-
-    border:
-        1px solid #36202b;
-
-    border-radius: 20px;
-
-    background: #100a0e;
-}
-
-
-.love-card span {
-
-    color: #9e5d78;
-}
-
-
-.love-card h3 {
-
-    font-size: 28px;
-
-    font-weight: normal;
-
-    margin:
-        15px 0;
-}
-
-
-.love-card p {
-
-    color: #9d8e95;
-
-    line-height: 1.7;
-}
-
-
-/* =====================================================
-   PROMISES
-===================================================== */
-
-.promise {
-
-    max-width: 700px;
-
-    margin:
-        0 auto 30px;
-
-    padding: 40px;
-
-    border-bottom:
-        1px solid #35212b;
-}
-
-
-.promise span {
-
-    color: #a8617f;
-
-    letter-spacing: 3px;
-
-    font-size: 11px;
-}
-
-
-.promise h3 {
-
-    margin-top: 15px;
-
-    font-size: 28px;
-
-    font-weight: normal;
-}
-
-
-/* =====================================================
-   FINAL
-===================================================== */
-
-.final {
-
-    min-height: 100vh;
-
-    padding:
-        120px 25px;
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    justify-content: center;
-
-    text-align: center;
-
-    background:
-        radial-gradient(
-            circle at center,
-            #351526,
-            #080608 65%
-        );
-}
-
-
-.final-hearts {
-
-    font-size: 30px;
-
-    margin-bottom: 40px;
-}
-
-
-.final > p {
-
-    letter-spacing: 5px;
-
-    font-size: 11px;
-
-    color: #a98294;
-}
-
-
-.final h2 {
-
-    margin-top: 25px;
-
-    font-size:
-        clamp(45px,8vw,90px);
-
-    font-weight: normal;
-}
-
-
-.final-message {
-
-    max-width: 600px;
-
-    margin-top: 40px;
-
-    color: #b9aab1;
-
-    line-height: 2;
-}
-
-
-.final-message h3 {
-
-    margin-top: 25px;
-
-    font-size: 28px;
-
-    color: #f2c4d7;
-
-    font-weight: normal;
-}
-
-
-.signature {
-
-    margin-top: 60px;
-
-    color: #8f8188;
-
-    line-height: 1.8;
-}
-
-
-.signature strong {
-
-    color: #d8a1b7;
-}
-
-
-/* =====================================================
+/* =========================================
    MOBILE
-===================================================== */
+========================================= */
 
-@media (max-width: 700px) {
+@media (max-width: 600px) {
 
+    .intro-text {
 
-    .intro-message {
+        margin-top: 55px;
 
         font-size: 10px;
 
-        letter-spacing: 3px;
+        letter-spacing: 2.5px;
     }
 
+    .character-stage {
+
+        height: 330px;
+
+        margin-top: 20px;
+    }
+
+    .character {
+
+        width: 145px;
+    }
+
+    .monkey {
+
+        left: -170px;
+    }
+
+    .duck {
+
+        right: -170px;
+    }
+
+    @keyframes monkeyEnter {
+
+        0% {
+            opacity: 0;
+            left: -180px;
+            transform: translateX(-60px) rotate(-10deg);
+        }
+
+        15% {
+            opacity: 1;
+        }
+
+        100% {
+            opacity: 1;
+            left: calc(50% - 135px);
+            transform: rotate(0);
+        }
+    }
+
+    @keyframes duckEnter {
+
+        0% {
+            opacity: 0;
+            right: -180px;
+            transform: translateX(60px) rotate(10deg);
+        }
+
+        15% {
+            opacity: 1;
+        }
+
+        100% {
+            opacity: 1;
+            right: calc(50% - 135px);
+            transform: rotate(0);
+        }
+    }
+
+    .hug-character {
+
+        width: 245px;
+    }
 
     .tiku-photo-container {
 
-        width: 180px;
-        height: 180px;
+        width: 250px;
 
-        top: 25%;
+        top: 40%;
     }
 
+    .birthday-message {
 
-    .cartoon.monkey {
-
-        transform:
-            translateX(-250px);
-
-        animation-name:
-            monkeyMobile,
-            hugMonkey;
+        margin-top: 0;
     }
 
-
-    .cartoon.duck {
-
-        transform:
-            translateX(250px);
-
-        animation-name:
-            duckMobile,
-            hugDuck;
-    }
-
-
-    @keyframes monkeyMobile {
-
-        0% {
-
-            transform:
-                translateX(-250px)
-                translateY(15px);
-        }
-
-        30% {
-
-            transform:
-                translateX(-180px)
-                translateY(-8px);
-        }
-
-        65% {
-
-            transform:
-                translateX(-50px)
-                translateY(0);
-        }
-
-        100% {
-
-            transform:
-                translateX(-45px)
-                translateY(0);
-        }
-    }
-
-
-    @keyframes duckMobile {
-
-        0% {
-
-            transform:
-                translateX(250px)
-                translateY(15px);
-        }
-
-        30% {
-
-            transform:
-                translateX(180px)
-                translateY(-8px);
-        }
-
-        65% {
-
-            transform:
-                translateX(50px)
-                translateY(0);
-        }
-
-        100% {
-
-            transform:
-                translateX(45px)
-                translateY(0);
-        }
-    }
-
-
-    .birthday-content {
-
-        padding:
-            0 20px;
-    }
-
-
-    .birthday-content h1 {
+    .birthday-message h1 {
 
         font-size: 42px;
     }
 
+    .love-line {
 
-    .chapter {
-
-        padding:
-            90px 20px;
+        font-size: 18px;
     }
 
+    .small-message {
 
-    .timeline-item,
-    .timeline-item.reverse {
-
-        flex-direction:
-            column;
-
-        text-align: center;
-
-        gap: 30px;
+        font-size: 12px;
     }
 
+    .story-button {
 
-    .timeline-photo {
+        padding: 13px 24px;
 
-        width: 100%;
+        font-size: 14px;
     }
-
-
-    .gallery {
-
-        grid-template-columns:
-            1fr;
-    }
-
-
-    .love-grid {
-
-        grid-template-columns:
-            1fr;
-    }
-
 }
