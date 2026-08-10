@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
 
     <meta name="viewport"
@@ -12,185 +13,1110 @@
 
     <title>Happy Birthday Tiku ❤️</title>
 
-    <!-- Main CSS -->
     <link rel="stylesheet" href="style.css">
+
 </head>
 
 
 <body>
 
-    <!-- =========================================
-         FLOATING BACKGROUND HEARTS
-    ========================================== -->
 
-    <div class="hearts" aria-hidden="true">
+<!-- =====================================================
+     FLOATING HEARTS
+===================================================== -->
 
-        <span>❤️</span>
-        <span>💗</span>
-        <span>💕</span>
-        <span>❤️</span>
-        <span>💖</span>
-        <span>💗</span>
-        <span>💕</span>
-        <span>❤️</span>
+<div class="hearts" aria-hidden="true">
+
+    <span>❤️</span>
+    <span>💗</span>
+    <span>💕</span>
+    <span>💖</span>
+    <span>❤️</span>
+    <span>💗</span>
+    <span>💕</span>
+    <span>💖</span>
+
+</div>
+
+
+
+<!-- =====================================================
+     OPENING SCREEN
+===================================================== -->
+
+<main class="opening-screen" id="home">
+
+
+    <!-- INTRO -->
+
+    <div class="intro-text">
+
+        A LITTLE SOMETHING I MADE FOR YOU...
 
     </div>
 
 
-    <!-- =========================================
-         OPENING SCREEN
-    ========================================== -->
 
-    <main class="opening-screen">
+    <!-- =================================================
+         MONKEY + DUCK ANIMATION
+    ================================================== -->
 
-
-        <!-- =====================================
-             INTRO TEXT
-        ====================================== -->
-
-        <div class="intro-text">
-
-            A LITTLE SOMETHING I MADE FOR YOU...
-
-        </div>
+    <div class="animation-area">
 
 
-        <!-- =====================================
-             MONKEY + DUCK ANIMATION
-        ====================================== -->
+        <!-- Monkey -->
 
-        <div class="animation-area">
-
-
-            <!-- Monkey enters from LEFT -->
-
-            <img
-                src="assets/photos/monkey.png"
-                alt="Cute Monkey"
-                class="character monkey"
-                id="monkey"
-            >
-
-
-            <!-- Duck enters from RIGHT -->
-
-            <img
-                src="assets/photos/duck.png"
-                alt="Cute Duck"
-                class="character duck"
-                id="duck"
-            >
-
-
-            <!--
-                This image appears when
-                Monkey and Duck hug.
-            -->
-
-            <img
-                src="assets/photos/hug.png"
-                alt="Monkey and Duck Hugging"
-                class="hug-character"
-                id="hug"
-            >
-
-        </div>
-
-
-
-        <!-- =====================================
-             TIKU PHOTO
-        ====================================== -->
-
-        <div
-            class="tiku-photo-container"
-            id="tikuPhoto"
+        <img
+            src="assets/photos/monkey.png"
+            alt="Cute Monkey"
+            class="character monkey"
+            id="monkey"
         >
 
-            <!-- Glow behind photo -->
 
-            <div class="photo-glow"></div>
+        <!-- Duck -->
+
+        <img
+            src="assets/photos/duck.png"
+            alt="Cute Duck"
+            class="character duck"
+            id="duck"
+        >
 
 
-            <!-- Tiku's actual photo -->
+        <!-- Hug -->
+
+        <img
+            src="assets/photos/hug.png"
+            alt="Monkey and Duck Hugging"
+            class="hug-character"
+            id="hug"
+        >
+
+    </div>
+
+
+
+    <!-- =================================================
+         TIKU PHOTO
+    ================================================== -->
+
+    <div
+        class="tiku-photo-container"
+        id="tikuPhoto"
+    >
+
+        <div class="photo-glow"></div>
+
+        <img
+            src="assets/photos/tikucover.jpg"
+            alt="Tiku"
+            class="tiku-photo"
+        >
+
+    </div>
+
+
+
+    <!-- =================================================
+         BIRTHDAY MESSAGE
+    ================================================== -->
+
+    <section class="birthday-content">
+
+        <h1>
+
+            Happy Birthday Tiku
+
+            <span class="title-heart">
+                ❤️
+            </span>
+
+        </h1>
+
+
+        <p class="love-line">
+
+            Mur priyo Patihah,<br>
+
+            from your Bandor.
+            🐒❤️🦆
+
+        </p>
+
+
+        <p class="quote">
+
+            Some people become a part of your life...<br>
+
+            and some people become your life.
+
+        </p>
+
+
+        <button
+            id="beginStory"
+            type="button"
+        >
+
+            ✨ Begin Our Story ❤️
+
+        </button>
+
+    </section>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     NAVIGATION
+===================================================== -->
+
+<nav class="main-navigation">
+
+    <a href="#story">Our Story</a>
+
+    <a href="#childhood">Childhood</a>
+
+    <a href="#memories">Memories</a>
+
+    <a href="#videos">Videos</a>
+
+    <a href="#voices">Voice</a>
+
+    <a href="#chats">Chats</a>
+
+    <a href="#promises">Promises</a>
+
+</nav>
+
+
+
+<!-- =====================================================
+     OUR STORY
+===================================================== -->
+
+<section
+    class="website-section story-section"
+    id="story"
+>
+
+    <div class="section-heading">
+
+        <span>01</span>
+
+        <h2>Our Story ❤️</h2>
+
+        <p>
+            Every beautiful story has a beginning.
+            Ours is one of my favourite stories ever written.
+        </p>
+
+    </div>
+
+
+    <div class="story-card">
+
+        <div class="story-date">
+            ✨ The Beginning
+        </div>
+
+        <h3>
+            And then there was us...
+        </h3>
+
+        <p>
+            Somewhere between ordinary days and unexpected
+            moments, you became someone very special to me.
+        </p>
+
+        <p>
+            I don't know exactly when it happened,
+            but slowly you became a part of my everyday life,
+            my thoughts, my happiness and my dreams.
+        </p>
+
+        <div class="story-heart">
+            ❤️
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CHILDHOOD
+===================================================== -->
+
+<section
+    class="website-section childhood-section"
+    id="childhood"
+>
+
+    <div class="section-heading">
+
+        <span>02</span>
+
+        <h2>You Grew From Here... 🌸</h2>
+
+        <p>
+            Before you became the person I know and love today,
+            there was a little girl with her own beautiful story.
+        </p>
+
+    </div>
+
+
+    <div class="childhood-timeline">
+
+
+        <div class="timeline-item">
+
+            <div class="timeline-number">
+                01
+            </div>
+
+            <div class="timeline-content">
+
+                <h3>
+                    Little Tiku 👶
+                </h3>
+
+                <p>
+                    The little girl who had no idea
+                    how many beautiful memories
+                    she would create one day.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="timeline-line"></div>
+
+
+
+        <div class="timeline-item">
+
+            <div class="timeline-number">
+                02
+            </div>
+
+            <div class="timeline-content">
+
+                <h3>
+                    Growing Up 🌷
+                </h3>
+
+                <p>
+                    Years passed, memories were made,
+                    and that little girl slowly became
+                    the amazing person she is today.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="timeline-line"></div>
+
+
+
+        <div class="timeline-item">
+
+            <div class="timeline-number">
+                03
+            </div>
+
+            <div class="timeline-content">
+
+                <h3>
+                    And Then I Met You ❤️
+                </h3>
+
+                <p>
+                    And somewhere along the way,
+                    our paths crossed.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CUTE MOMENTS
+===================================================== -->
+
+<section
+    class="website-section moments-section"
+    id="moments"
+>
+
+    <div class="section-heading">
+
+        <span>03</span>
+
+        <h2>Our Cute Moments 🥰</h2>
+
+        <p>
+            The little moments that became
+            some of my favourite memories.
+        </p>
+
+    </div>
+
+
+    <div class="memory-message-grid">
+
+
+        <div class="memory-message">
+
+            <div class="memory-icon">
+                🥰
+            </div>
+
+            <h3>
+                Your Smile
+            </h3>
+
+            <p>
+                One smile from you can make
+                an ordinary day feel special.
+            </p>
+
+        </div>
+
+
+        <div class="memory-message">
+
+            <div class="memory-icon">
+                🐒❤️🦆
+            </div>
+
+            <h3>
+                Monkey & Duck
+            </h3>
+
+            <p>
+                Somehow you became my favourite Duck
+                and I became your Bandor.
+            </p>
+
+        </div>
+
+
+        <div class="memory-message">
+
+            <div class="memory-icon">
+                💕
+            </div>
+
+            <h3>
+                Little Things
+            </h3>
+
+            <p>
+                It's never just the big moments.
+                It's all those tiny things I remember.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     MEMORIES GALLERY
+===================================================== -->
+
+<section
+    class="website-section memories-section"
+    id="memories"
+>
+
+    <div class="section-heading">
+
+        <span>04</span>
+
+        <h2>Our Memories 📸</h2>
+
+        <p>
+            A collection of moments I never want to forget.
+        </p>
+
+    </div>
+
+
+    <div class="gallery-grid">
+
+
+        <!-- Replace these with your photos -->
+
+        <div class="gallery-item">
 
             <img
                 src="assets/photos/tikucover.jpg"
-                alt="Tiku"
-                class="tiku-photo"
+                alt="Our Memory"
             >
 
         </div>
 
 
+        <div class="gallery-item memory-placeholder">
 
-        <!-- =====================================
-             BIRTHDAY MESSAGE
-        ====================================== -->
+            <span>📷</span>
 
-        <section class="birthday-content">
-
-
-            <!-- Main heading -->
-
-            <h1>
-
-                Happy Birthday Tiku
-
-                <span class="title-heart">
-                    ❤️
-                </span>
-
-            </h1>
-
-
-            <!-- Personal message -->
-
-            <p class="love-line">
-
-                Mur priyo Patihah,<br>
-
-                from your Bandor.
-                🐒❤️🦆
-
+            <p>
+                Your next memory
             </p>
 
+        </div>
 
-            <!-- Quote -->
 
-            <p class="quote">
+        <div class="gallery-item memory-placeholder">
 
-                Some people become a part of your life...<br>
+            <span>💕</span>
 
-                and some people become your life.
-
+            <p>
+                A beautiful moment
             </p>
 
+        </div>
 
-            <!-- Begin Story Button -->
 
-            <button
-                id="beginStory"
-                type="button"
+        <div class="gallery-item memory-placeholder">
+
+            <span>✨</span>
+
+            <p>
+                More memories coming...
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     VIDEOS
+===================================================== -->
+
+<section
+    class="website-section videos-section"
+    id="videos"
+>
+
+    <div class="section-heading">
+
+        <span>05</span>
+
+        <h2>Our Videos 🎥</h2>
+
+        <p>
+            Some moments deserve to be remembered
+            not only in photographs, but in motion.
+        </p>
+
+    </div>
+
+
+    <div class="video-gallery">
+
+
+        <div class="video-card">
+
+            <video
+                controls
+                preload="metadata"
+                playsinline
             >
 
-                ✨ Begin Our Story ❤️
+                <source
+                    src="wedding.mp4"
+                    type="video/mp4"
+                >
 
-            </button>
+                Your browser does not support
+                the video tag.
+
+            </video>
 
 
-        </section>
+            <div class="video-title">
+
+                One Of Our Beautiful Moments ❤️
+
+            </div>
+
+        </div>
 
 
-    </main>
+    </div>
+
+</section>
 
 
 
-    <!-- =========================================
-         JAVASCRIPT
-    ========================================== -->
+<!-- =====================================================
+     VOICE MESSAGES
+===================================================== -->
 
-    <script src="script.js"></script>
+<section
+    class="website-section voices-section"
+    id="voices"
+>
+
+    <div class="section-heading">
+
+        <span>06</span>
+
+        <h2>Your Voice 🎙️</h2>
+
+        <p>
+            Some things are even more special
+            when I can hear them in your voice.
+        </p>
+
+    </div>
+
+
+    <div class="voice-card">
+
+
+        <div class="voice-icon">
+            🎙️
+        </div>
+
+
+        <div class="voice-info">
+
+            <h3>
+                A Voice I Could Listen To Forever
+            </h3>
+
+            <p>
+                Your voice message ❤️
+            </p>
+
+            <!--
+            Later upload your audio file and change
+            the filename below.
+
+            Example:
+
+            <audio controls>
+                <source
+                    src="assets/audio/voice1.mp3"
+                    type="audio/mpeg"
+                >
+            </audio>
+            -->
+
+            <div class="audio-placeholder">
+
+                🎧 Add your voice message here
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CHAT SCREENSHOTS
+===================================================== -->
+
+<section
+    class="website-section chats-section"
+    id="chats"
+>
+
+    <div class="section-heading">
+
+        <span>07</span>
+
+        <h2>Our Chats 💬</h2>
+
+        <p>
+            Conversations that somehow became memories.
+        </p>
+
+    </div>
+
+
+    <div class="chat-story">
+
+
+        <div class="chat-bubble received">
+
+            Heyyy 🥺❤️
+
+        </div>
+
+
+        <div class="chat-bubble sent">
+
+            What happened? 😂
+
+        </div>
+
+
+        <div class="chat-bubble received">
+
+            Nothinggg...
+
+        </div>
+
+
+        <div class="chat-bubble sent">
+
+            I know you 😂
+
+        </div>
+
+
+        <div class="chat-bubble received">
+
+            🥰❤️
+
+        </div>
+
+
+        <div class="chat-bubble sent">
+
+            My favourite Duck 🦆❤️
+
+        </div>
+
+    </div>
+
+
+    <p class="chat-note">
+
+        💬 Real chat screenshots can be added here later.
+
+    </p>
+
+</section>
+
+
+
+<!-- =====================================================
+     ANIMATED CHAT STORY
+===================================================== -->
+
+<section
+    class="website-section animated-chat-section"
+>
+
+    <div class="section-heading">
+
+        <span>08</span>
+
+        <h2>Our Little Conversation ❤️</h2>
+
+        <p>
+            Because even our random conversations
+            deserve their own little movie.
+        </p>
+
+    </div>
+
+
+    <div class="animated-chat">
+
+
+        <div class="typing-text">
+
+            Monkey is typing...
+
+        </div>
+
+
+        <div class="animated-message">
+
+            I have something to tell you...
+
+        </div>
+
+
+        <div class="animated-message delay-one">
+
+            You are my favourite person. ❤️
+
+        </div>
+
+
+        <div class="animated-message delay-two">
+
+            Always have been. Always will be. 💕
+
+        </div>
+
+
+        <div class="animated-message delay-three">
+
+            🐒❤️🦆
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     THINGS I LOVE
+===================================================== -->
+
+<section
+    class="website-section love-section"
+>
+
+    <div class="section-heading">
+
+        <span>09</span>
+
+        <h2>Things I Love About You 💗</h2>
+
+        <p>
+            I could probably write a book...
+            but here are a few.
+        </p>
+
+    </div>
+
+
+    <div class="love-grid">
+
+
+        <div class="love-card">
+
+            <span>❤️</span>
+
+            <h3>
+                Your Smile
+            </h3>
+
+            <p>
+                It makes everything feel better.
+            </p>
+
+        </div>
+
+
+        <div class="love-card">
+
+            <span>🥰</span>
+
+            <h3>
+                Your Cuteness
+            </h3>
+
+            <p>
+                Especially when you don't realise
+                how cute you are.
+            </p>
+
+        </div>
+
+
+        <div class="love-card">
+
+            <span>😂</span>
+
+            <h3>
+                Your Crazy Side
+            </h3>
+
+            <p>
+                Life would definitely be boring without it.
+            </p>
+
+        </div>
+
+
+        <div class="love-card">
+
+            <span>💗</span>
+
+            <h3>
+                Your Heart
+            </h3>
+
+            <p>
+                The beautiful person you are inside.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PROMISES
+===================================================== -->
+
+<section
+    class="website-section promises-section"
+    id="promises"
+>
+
+    <div class="section-heading">
+
+        <span>10</span>
+
+        <h2>Our Promises 🤞❤️</h2>
+
+        <p>
+            A few promises from your Bandor.
+        </p>
+
+    </div>
+
+
+    <div class="promise-list">
+
+
+        <div class="promise">
+
+            <span>
+                01
+            </span>
+
+            <p>
+                I promise to keep choosing you,
+                even on ordinary days.
+            </p>
+
+        </div>
+
+
+        <div class="promise">
+
+            <span>
+                02
+            </span>
+
+            <p>
+                I promise to stand beside you
+                through every chapter.
+            </p>
+
+        </div>
+
+
+        <div class="promise">
+
+            <span>
+                03
+            </span>
+
+            <p>
+                I promise to keep making you smile.
+            </p>
+
+        </div>
+
+
+        <div class="promise">
+
+            <span>
+                04
+            </span>
+
+            <p>
+                I promise that your happiness
+                will always matter to me.
+            </p>
+
+        </div>
+
+
+        <div class="promise">
+
+            <span>
+                05
+            </span>
+
+            <p>
+                And I promise to always be
+                your Bandor. 🐒❤️
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     LOVE LETTER
+===================================================== -->
+
+<section
+    class="website-section letter-section"
+>
+
+    <div class="section-heading">
+
+        <span>11</span>
+
+        <h2>A Letter For You 💌</h2>
+
+    </div>
+
+
+    <div class="love-letter">
+
+        <p>
+            My favourite Duck,
+        </p>
+
+
+        <p>
+            Happy Birthday to the person who has
+            become such a beautiful part of my life.
+        </p>
+
+
+        <p>
+            I don't know if words will ever be enough
+            to explain how much you mean to me,
+            but I wanted to create this little corner
+            of the internet just for you.
+        </p>
+
+
+        <p>
+            Every photograph, every conversation,
+            every silly moment and every little memory
+            means something to me.
+        </p>
+
+
+        <p>
+            Thank you for being you.
+        </p>
+
+
+        <p>
+            And thank you for letting your Bandor
+            be a part of your story. 🐒❤️🦆
+        </p>
+
+
+        <div class="letter-signature">
+
+            Forever yours,<br>
+
+            Your Bandor 🐒❤️
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FINAL SURPRISE
+===================================================== -->
+
+<section
+    class="final-surprise"
+    id="surprise"
+>
+
+
+    <div class="final-hearts">
+
+        ❤️ 💗 💕 💖 ❤️
+
+    </div>
+
+
+    <h2>
+        This Is Just The Beginning...
+    </h2>
+
+
+    <p>
+
+        There are still so many memories
+        left for us to create.
+
+    </p>
+
+
+    <div class="final-message">
+
+        Happy Birthday, Tiku ❤️
+
+    </div>
+
+
+    <div class="final-names">
+
+        Your Bandor 🐒
+        <span>❤️</span>
+        My favourite Patihah 🦆
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    Made with ❤️ by your Bandor 🐒
+
+</footer>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script src="script.js"></script>
 
 
 </body>
