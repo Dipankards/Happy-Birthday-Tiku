@@ -1074,6 +1074,29 @@ a {
         rgba(255,100,150,.3);
 }
 
+/* Childhood Photo Frames */
+.childhood-photo-frame {
+    margin: 15px 0;
+    max-width: 320px;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.childhood-photo-frame:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 35px rgba(255, 60, 130, 0.25);
+}
+
+.childhood-photo-frame img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
 
 /* =====================================================
    CUTE MOMENTS
@@ -2185,6 +2208,10 @@ footer {
         padding:
             80px
             20px;
+    }
+
+    .childhood-photo-frame {
+        max-width: 100%;
     }
 }
 
