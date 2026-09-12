@@ -1448,60 +1448,51 @@
 
 
 
-   <video class="auto-play-video" controls muted playsinline width="100%">
+   <video controls width="100%">
+
     <source src="assets/photos/Video-27625.mp4" type="video/mp4">
+
     Your browser does not support the video tag.
+
 </video>
 
-<div class="video-section">
+
+
+    <div class="video-section">
+
     <h3>A Wish from Your Wellwishers</h3>
-    <video class="auto-play-video" controls muted playsinline width="100%">
+
+    <video controls width="100%">
+
         <source src="assets/photos/Video-90099.mp4" type="video/mp4">
+
         Your browser does not support the video tag.
+
     </video>
+
+
 
     <h3>A Wish from Rajasthan</h3>
-    <video class="auto-play-video" controls muted playsinline width="100%">
+
+    <video controls width="100%">
+
         <source src="assets/photos/Video-6945.mp4" type="video/mp4">
+
         Your browser does not support the video tag.
+
     </video>
+
+
 
     <h3>A Wish from Your Crush</h3>
-    <video class="auto-play-video" controls muted playsinline width="100%">
+
+    <video controls width="100%">
+
         <source src="assets/photos/Video-53349.mp4" type="video/mp4">
+
         Your browser does not support the video tag.
+
     </video>
-</div>
-
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
-        const videos = document.querySelectorAll(".auto-play-video");
-
-        const observerOptions = {
-            root: null,
-            threshold: 0.6
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                const video = entry.target;
-                if (entry.isIntersecting) {
-                    videos.forEach(v => {
-                        if (v !== video) v.pause();
-                    });
-                    video.play().catch(error => {
-                        console.log("Autoplay prevented:", error);
-                    });
-                } else {
-                    video.pause();
-                }
-            });
-        }, observerOptions);
-
-        videos.forEach(video => observer.observe(video));
-    });
-</script>
-
 </section>
 
 
